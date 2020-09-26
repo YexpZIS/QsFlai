@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:QsFlai"
         mc:Ignorable="d"
         Loaded="Window_Loaded" Activated="Window_Activated"
+        SizeChanged="Window_SizeChanged"
         WindowStyle="None" AllowsTransparency="True" ShowInTaskbar="False"
         Background="Transparent"
         Title="MainWindow" Height="450" Width="800">

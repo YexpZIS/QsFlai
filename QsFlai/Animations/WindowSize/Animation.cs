@@ -12,8 +12,8 @@ namespace QsFlai.Animations.WindowSize
     abstract class Animation : Changer
     {
         private DoubleAnimation animation;
-        private Settings settings;
 
+        protected Settings settings;
         protected Grid grid;
         protected DependencyProperty property;
 
