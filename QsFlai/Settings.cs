@@ -14,15 +14,15 @@ using System.Windows.Controls;
 
 namespace QsFlai
 {
-    public static class Settings
+    public class Settings
     {
-        private static readonly string name = "QsFlai.settings";
-        private static readonly string path;
-        private static readonly string fullname;
+        private readonly string name = "QsFlai.settings";
+        private readonly string path;
+        private readonly string fullname;
 
-        public static List<Gap> gaps;
+        public List<Gap> gaps;
         
-        static Settings()
+        public Settings()
         {
             path = Directory.GetCurrentDirectory();
             fullname = String.Format("{0}/{1}", path, name);
@@ -31,12 +31,12 @@ namespace QsFlai
             Load();
         }
 
-        public static void Save()
+        public void Save()
         {
             string json = JsonConvert.SerializeObject(gaps);
             Sys.WriteAllText(fullname, json);
         }
-        public static void Load()
+        public void Load()
         {
             if (Sys.Exists(fullname))
             {

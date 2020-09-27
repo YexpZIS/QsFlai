@@ -20,27 +20,24 @@ namespace QsFlai
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Settings settings;
         BackgroundPiner backgroundPiner;
 
         public MainWindow()
         {
             InitializeComponent();
-            dfghkbjsdgkjsdfng
-            // Создавать новый window для каждого gap в Settings
-            // Это окно Просто спрятать Visible hide 
-            Settings.Save();
+
+            settings = new Settings();
             backgroundPiner = new BackgroundPiner(this);
-            SetDefaultWindowSettings();
+            CreateVirtualFolders();
         }
-        private void SetDefaultWindowSettings()
+        
+        private void CreateVirtualFolders()
         {
-            //WindowProperties properties = Settings.getWindowProperties();
-
-           /* Left = properties.X;
-            Top = properties.Y;
-
-            Height = properties.Height;
-            Width = properties.Width;*/
+            for (int i=0;i<settings.gaps.Count;i++)
+            {
+                new VirtualFolder(i).Show();
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -52,9 +49,5 @@ namespace QsFlai
             backgroundPiner.ShoveToBackground();
         }
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-
-        }
     }
 }

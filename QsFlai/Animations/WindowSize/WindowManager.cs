@@ -8,24 +8,57 @@ using System.Windows.Controls;
 
 namespace QsFlai.Animations.WindowSize
 {
+    public enum GridState
+    {
+        Max,
+        Min
+    }
+
     class WindowManager
     {
-        Changer width;
-        Changer height;
+        private Gap settings;
+        private Animation width;
+        private Animation height;
 
-        public WindowManager(Grid grid)
+        private GridState state;
+        private bool isAnimationActive = false;
+
+        public WindowManager(Grid grid, Gap settings)
         {
-            width = new Width(grid);
-            height = new Height(grid);
+            this.settings = settings;
+            int animationSpeed = settings.Animation.Speed;
+
+
+            var initSize = settings.Scale.Initial;
+
+            width = new Animation(grid, Grid.WidthProperty, animationSpeed);
+            width.setDefaultValue(initSize.Width);
+
+            height = new Animation(grid, Grid.HeightProperty, animationSpeed);
+            height.setDefaultValue(initSize.Height);
+
+            state = GridState.Min;
         }
 
         public void resizeWindowToMinimumSize()
         {
-            changeWindowSize(Settings.gaps[id].Scale.Initial);
+            if (state == GridState.Max && !isAnimationActive) 
+            {
+                isAnimationActive = true;
+                changeWindowSize(settings.Scale.Initial);
+                state = GridState.Min;
+                isAnimationActive = false;
+            }
         }
         public void resizeWindowToMaximumSize()
         {
-            changeWindowSize(Settings.gaps[id].Scale.Final);
+            if (state == GridState.Min && !isAnimationActive)
+            {
+                isAnimationActive = true;
+                changeWindowSize(settings.Scale.Final);
+                state = GridState.Max;
+                isAnimationActive = false;
+            }
         }
         private void changeWindowSize(Size size)
         {

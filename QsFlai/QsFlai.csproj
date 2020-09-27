@@ -57,11 +57,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Animations\WindowSize\Animation.cs" />
-    <Compile Include="Animations\WindowSize\Height.cs" />
-    <Compile Include="Animations\WindowSize\Changer.cs" />
-    <Compile Include="Animations\WindowSize\Width.cs" />
     <Compile Include="Animations\WindowSize\WindowManager.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="VirtualFolder.xaml.cs">
+      <DependentUpon>VirtualFolder.xaml</DependentUpon>
+    </Compile>
     <Page Include="Dictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -79,6 +79,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VirtualFolder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
