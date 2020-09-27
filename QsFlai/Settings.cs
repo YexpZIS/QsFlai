@@ -7,44 +7,50 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Newtonsoft.Json;
+
+using Sys = System.IO.File;
+using System.Windows.Controls;
 
 namespace QsFlai
 {
-    public class Settings
+    public static class Settings
     {
-        public WindowProperties window;
+        private static readonly string name = "QsFlai.settings";
+        private static readonly string path;
+        private static readonly string fullname;
 
-        public string name = ".settings";
-        private string path;
-        public int AnimationSpeed { get; set; } = 2000; // in Milliseconds
+        public static List<Gap> gaps;
         
-        public Settings()
+        static Settings()
         {
             path = Directory.GetCurrentDirectory();
+            fullname = String.Format("{0}/{1}", path, name);
+            gaps = new List<Gap>();
 
-            window = new WindowProperties();
+            Load();
         }
 
-        public void Save()
+        public static void Save()
         {
-            // ToDo serialize objects JSON
-            string text = "// ToDo serialize objects JSON";
-            File.WriteAllText(String.Format("{0}/{1}", path, name), text);
+            string json = JsonConvert.SerializeObject(gaps);
+            Sys.WriteAllText(fullname, json);
         }
-        public void Load()
+        public static void Load()
         {
-            // ToDo serialize objects JSON
-            //File.ReadAllText();
+            if (Sys.Exists(fullname))
+            {
+                string json = Sys.ReadAllText(fullname);
+                gaps = JsonConvert.DeserializeObject<List<Gap>>(json);
+            }
+            else
+            {
+                gaps.Add(new Gap());
+                Save();
+            }
         }
 
-    }
 
-    public class WindowProperties
-    {
-        public int Height { get; set; } = 450;
-        public int Width { get; set; } = 800;
-        public int X { get; set; }
-        public int Y { get; set; }
     }
 
     // serialize List<Gaps>
@@ -52,30 +58,39 @@ namespace QsFlai
     {
         public string Name { get; set; } = "Window"; // Название окна
 
+        public string BackgroundImage { get; set; } //(base64) Изображение на подложке типа постер 
+        //(при увеличении/уменьшении окна 
+        //не должно меняться в размерах)
+
         // Position
         public Point Position { get; set; } = new Point(0, 0); // Положение окна по оси X и Y
 
-        // Size можно свернуть эти свойства в класс
-        public bool StaticSize { get; set; } = false; // если true, то окно не меняет ширину и принимает размер FinalSize
-        public Size InitialSize { get; set; } = new Size(120,30); // Начальный размер
-        public Size FinalSize { get; set; } = new Size(450,800); // Конечный размер
+        // Size 
+        public Scale Scale { get; set; } = new Scale(); // Отвечает за размер окна
 
-        // Animation Speed
-        public double AnimationSpeed { get; set; } = 1000; // Скорость анимаций в милисекундах
+        // Animation 
+        public Animation Animation { get; set; } = new Animation();// Отвечает за настройки анимации
 
-        public List<File> Files { get; set; } // Список файлов, добавленных в окно
+        // Files
+        public List<File> Files { get; set; } = new List<File>(); // Список файлов, добавленных в окно
     }
 
-    public class Size
+    public class Scale
     {
-        public Size(int Width, int Height)
-        {
-            this.Width = Width;
-            this.Height = Height;
-        }
+        public bool Static { get; set; } = false; // если true, то окно не меняет ширину и принимает размер FinalSize
+        public Size Initial { get; set; } = new Size(120, 30); // Начальный размер (min)
+        public Size Final { get; set; } = new Size(450, 800); // Конечный размер (max)
+    }
 
-        public int Width { get; set; }
-        public int Height { get; set; }
+    public class Colors
+    {
+        /*public EditingMode="";
+        public WindowHeader;// Body Border + files color*/
+    }
+
+    public class Animation
+    {
+        public int Speed { get; set; } = 1000; // Скорость всех анимаций в милисекундах
     }
 
     public class File

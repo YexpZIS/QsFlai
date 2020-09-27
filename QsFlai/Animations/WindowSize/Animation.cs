@@ -13,26 +13,24 @@ namespace QsFlai.Animations.WindowSize
     {
         private DoubleAnimation animation;
 
-        protected Settings settings;
         protected Grid grid;
         protected DependencyProperty property;
 
-        protected Animation(Settings settings, Grid grid)
+        protected Animation(Grid grid)
         {
-            this.settings = settings;
             this.grid = grid;
 
             animation = new DoubleAnimation();
-            animation.Duration = TimeSpan.FromMilliseconds(settings.AnimationSpeed);
+            animation.Duration = TimeSpan.FromMilliseconds(Settings.gaps[id].Animation.Speed);
         }
 
         public void Change(int size)
         {
-            Save(size);
+            //Save(size);
             animation.To = size;
             grid.BeginAnimation(property, animation);
         }
 
-        protected abstract void Save(int size);
+        protected abstract void Save(Size min, Size max);
     }
 }

@@ -10,14 +10,14 @@ namespace QsFlai.Animations.WindowSize
 {
     class Height : Animation
     {
-        public Height(Settings settings,Grid grid) : base(settings,grid)
+        public Height(Grid grid) : base(grid)
         {
             property = Grid.HeightProperty;
         }
 
         protected override void Save(int size)
         {
-            settings.window.Height = size;
+            Settings.gaps[id].Scale.Final.Height = size;
         }
     }
 }

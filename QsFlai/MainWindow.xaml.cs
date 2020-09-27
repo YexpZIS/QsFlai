@@ -25,19 +25,22 @@ namespace QsFlai
         public MainWindow()
         {
             InitializeComponent();
-
+            dfghkbjsdgkjsdfng
+            // Создавать новый window для каждого gap в Settings
+            // Это окно Просто спрятать Visible hide 
+            Settings.Save();
             backgroundPiner = new BackgroundPiner(this);
             SetDefaultWindowSettings();
         }
         private void SetDefaultWindowSettings()
         {
-            WindowProperties properties = Settings.getWindowProperties();
+            //WindowProperties properties = Settings.getWindowProperties();
 
-            Left = properties.X;
+           /* Left = properties.X;
             Top = properties.Y;
 
             Height = properties.Height;
-            Width = properties.Width;
+            Width = properties.Width;*/
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

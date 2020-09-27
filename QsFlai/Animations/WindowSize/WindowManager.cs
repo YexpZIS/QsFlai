@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace QsFlai.Animations.WindowSize
@@ -12,16 +13,24 @@ namespace QsFlai.Animations.WindowSize
         Changer width;
         Changer height;
 
-        public WindowManager(Settings settings,Grid grid)
+        public WindowManager(Grid grid)
         {
-            width = new Width(settings,grid);
-            height = new Height(settings,grid);
+            width = new Width(grid);
+            height = new Height(grid);
         }
 
-        public void changeWindowSize(int width, int height)
+        public void resizeWindowToMinimumSize()
         {
-            this.width.Change(width);
-            this.height.Change(height);
+            changeWindowSize(Settings.gaps[id].Scale.Initial);
+        }
+        public void resizeWindowToMaximumSize()
+        {
+            changeWindowSize(Settings.gaps[id].Scale.Final);
+        }
+        private void changeWindowSize(Size size)
+        {
+            this.width.Change((int)size.Width);
+            this.height.Change((int)size.Height);
         }
     }
 }
