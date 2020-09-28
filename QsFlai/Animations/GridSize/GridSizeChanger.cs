@@ -12,36 +12,34 @@ namespace QsFlai.Animations.GridSize
         public delegate void SizeChanged();
         public SizeChanged sizeChanged;
 
-        private Height height;
-        private Width width;
-
-        private bool isHeightComplete = true;
-        private bool isWidthComplete = true;
+        private Parties[] parties;
+        private bool[] isAnimationComplete = new bool[2] { true, true };
 
         private GridState state = GridState.Min;
 
         public GridSizeChanger(Grid grid, Gap settings)
         {
-            height = new Height(grid, settings);
-            height.Initialization();
-            width = new Width(grid, settings);
-            width.Initialization();
+            parties = new Parties[2] { new Height(grid, settings),
+                                        new Width(grid, settings) };
 
-            height.animation.animation.Completed += heightCompleted;
-            width.animation.animation.Completed += widthCompleted;
+            for (int i = 0; i < parties.Length; i++) 
+            {
+                parties[i].Initialization();
+            }
+
+            parties[0].animation.animation.Completed += heightCompleted;
+            parties[1].animation.animation.Completed += widthCompleted;
         }
 
         private void heightCompleted(object sender, EventArgs e)
         {
-            isHeightComplete = true;
-
+            isAnimationComplete[0] = true;
             Notify();
         }
 
         private void widthCompleted(object sender, EventArgs e)
         {
-            isWidthComplete = true;
-
+            isAnimationComplete[1] = true;
             Notify();
         }
         private void Notify()
@@ -52,9 +50,16 @@ namespace QsFlai.Animations.GridSize
             }
         }
 
-        public bool checkSize()
+        private bool checkSize()
         {
-            return isHeightComplete && isWidthComplete;
+            bool result = true;
+
+            foreach (bool status in isAnimationComplete)
+            {
+                result &= status;
+            }
+
+            return result;
         }
 
         public void setSize(GridState state)
@@ -63,11 +68,11 @@ namespace QsFlai.Animations.GridSize
             {
                 this.state = state;
 
-                isWidthComplete = false;
-                isHeightComplete = false;
-
-                width.Start(state);
-                height.Start(state);
+                for (int i = 0; i < parties.Length; i++)
+                {
+                    isAnimationComplete[i] = false;
+                    parties[i].Start(state);
+                }
             }
         }
     }
