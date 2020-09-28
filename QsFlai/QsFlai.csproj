@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Animations\WindowSize\Animation.cs" />
+    <Compile Include="Animations\WindowSize\Height.cs" />
     <Compile Include="Animations\WindowSize\WindowManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="VirtualFolder.xaml.cs">
