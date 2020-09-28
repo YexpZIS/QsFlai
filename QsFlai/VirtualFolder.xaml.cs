@@ -23,9 +23,12 @@ namespace QsFlai
         private BackgroundPiner backgroundPiner;
         private Gap settings;
         private WindowManager windowManager;
+        
         private readonly int id;
 
         private Grid grid;
+
+        private GridState state = GridState.Min;
 
         public VirtualFolder(int id)
         {
@@ -35,15 +38,10 @@ namespace QsFlai
             this.id = id;
 
             settings = MainWindow.settings.gaps[id];
-            //setDefautlGridSize();
+
             backgroundPiner = new BackgroundPiner(this);
 
-            windowManager = new WindowManager(grid, settings);
-        }
-        private void setDefautlGridSize()
-        {
-            grid.Height = settings.Scale.Initial.Height;
-            grid.Width = settings.Scale.Initial.Width;
+            windowManager = new WindowManager(grid, settings, ref state);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -62,12 +60,12 @@ namespace QsFlai
 
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
-            windowManager.resizeWindowToMaximumSize();
+            state = GridState.Max;
         }
 
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
-            windowManager.resizeWindowToMinimumSize();
+            state = GridState.Min;
         }
     }
 }

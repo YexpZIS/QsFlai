@@ -10,15 +10,16 @@ using System.Windows.Media.Animation;
 
 namespace QsFlai.Animations.WindowSize
 {
-    public class Animation
+    public class Animation<T> where T : Control
     {
-        private DoubleAnimation animation;
-        private DependencyProperty property;
-        private Grid grid;
+        public DoubleAnimation animation;
 
-        public Animation(Grid grid, DependencyProperty property, int AnimationSpeed)
+        private DependencyProperty property;
+        private Control control;
+
+        public Animation(T control, DependencyProperty property, int AnimationSpeed)
         {
-            this.grid = grid;
+            this.control = control;
             this.property = property;
 
             animation = new DoubleAnimation();
@@ -30,15 +31,15 @@ namespace QsFlai.Animations.WindowSize
             // Если grid не задать начального значения свойствам
             // (Height, Width), то вернет значение 'NaN'
 
-            var pro = grid.GetType().GetProperty(property.ToString());
-            pro.SetValue(grid, obj);
+            var pro = control.GetType().GetProperty(property.ToString());
+            pro.SetValue(control, obj);
         }
 
-        public void Change(int size)
+        public void Begin(int size)
         {
-            animation.From =(double) grid.GetValue(property);
+            animation.From = (double)control.GetValue(property);
             animation.To = size;
-            grid.BeginAnimation(property, animation);
+            control.BeginAnimation(property, animation);
         }
 
     }
