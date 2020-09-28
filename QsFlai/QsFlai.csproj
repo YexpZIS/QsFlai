@@ -56,9 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Animations\WindowSize\Animation.cs" />
-    <Compile Include="Animations\WindowSize\Height.cs" />
-    <Compile Include="Animations\WindowSize\WindowManager.cs" />
+    <Compile Include="Animations\GridSize\Animation.cs" />
+    <Compile Include="Animations\GridSize\GridSizeChanger.cs" />
+    <Compile Include="Animations\GridSize\Height.cs" />
+    <Compile Include="Animations\GridSize\GridState.cs" />
+    <Compile Include="Animations\GridSize\Parties.cs" />
+    <Compile Include="Animations\GridSize\Width.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="VirtualFolder.xaml.cs">
       <DependentUpon>VirtualFolder.xaml</DependentUpon>

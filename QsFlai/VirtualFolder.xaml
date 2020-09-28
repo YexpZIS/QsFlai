@@ -15,7 +15,7 @@
         <WindowChrome CaptionHeight="5"/>
     </WindowChrome.WindowChrome>
 
-    <Grid Name="MainGrid" VerticalAlignment="Top" >
+    <Grid Name="MainGrid" VerticalAlignment="Top" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -24,7 +24,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
+        <Grid Grid.Row="0">
             <Border Name="topBorder"  Background="#B2000000"/>
 
             <Label  Name="windowName" Content="Name"  HorizontalAlignment="Center" Height="40" Foreground="White"  VerticalAlignment="Center"  FontSize="20" />
@@ -41,7 +41,7 @@
             </TextBox>
         </Grid>
 
-        <Grid Grid.Row="1"  AllowDrop="True" Background="#72000000">
+        <Grid x:Name="folderPlace" Grid.Row="1"  AllowDrop="True" Background="#72000000">
             <!--DragEnter="Grid_DragEnter" Drop="Grid_Drop"-->
             <Border Name="border"  BorderThickness="5" BorderBrush="#00EE1702" />
 

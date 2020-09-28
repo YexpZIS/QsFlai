@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace QsFlai.Animations.WindowSize
+namespace QsFlai.Animations.GridSize
 {
     public class Animation
     {

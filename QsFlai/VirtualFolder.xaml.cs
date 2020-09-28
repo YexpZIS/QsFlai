@@ -1,4 +1,4 @@
-﻿using QsFlai.Animations.WindowSize;
+﻿using QsFlai.Animations.GridSize;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,26 +22,49 @@ namespace QsFlai
     {
         private BackgroundPiner backgroundPiner;
         private Gap settings;
-        private WindowManager windowManager;
+        private GridSizeChanger gridSize;
         
         private readonly int id;
 
         private Grid grid;
 
-        private GridState state = GridState.Min;
-
         public VirtualFolder(int id)
         {
             InitializeComponent();
 
-            this.grid = MainGrid;
             this.id = id;
+            this.grid = MainGrid;
 
             settings = MainWindow.settings.gaps[id];
 
             backgroundPiner = new BackgroundPiner(this);
 
-            windowManager = new WindowManager(grid, settings, ref state);
+            gridSize = new GridSizeChanger(grid, settings);
+            gridSize.sizeChanged += Size_Changed;
+        }
+        private void Size_Changed()
+        {
+            if (grid.IsMouseOver)
+            {
+                gridSize.setSize(GridState.Max);
+            }
+            else
+            {
+                gridSize.setSize(GridState.Min);
+            }
+        }
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            gridSize.setSize(GridState.Max);
+        }
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            gridSize.setSize(GridState.Min);
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -51,21 +74,6 @@ namespace QsFlai
         private void Window_Activated(object sender, EventArgs e)
         {
             backgroundPiner.ShoveToBackground();
-        }
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-
-        }
-
-        private void Grid_MouseEnter(object sender, MouseEventArgs e)
-        {
-            state = GridState.Max;
-        }
-
-        private void Grid_MouseLeave(object sender, MouseEventArgs e)
-        {
-            state = GridState.Min;
         }
     }
 }
