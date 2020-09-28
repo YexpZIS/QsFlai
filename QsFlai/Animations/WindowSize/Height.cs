@@ -10,7 +10,7 @@ namespace QsFlai.Animations.WindowSize
 {
     class Height
     {
-        private Animation animation;
+        public Animation animation;
 
         private Grid grid;
         private Gap settings;
@@ -62,7 +62,7 @@ namespace QsFlai.Animations.WindowSize
 
     class Width
     {
-        private Animation animation;
+        public Animation animation;
 
         private Grid grid;
         private Gap settings;
@@ -109,6 +109,71 @@ namespace QsFlai.Animations.WindowSize
         private void changeSize(Size size)
         {
             animation.Begin((int)size.Width);
+        }
+    }
+
+    public class AnimationManager 
+    {
+        public delegate void SizeChanged();
+        public SizeChanged sizeChanged;
+
+        private Height height;
+        private Width width;
+
+        private bool isHeightComplete = true;
+        private bool isWidthComplete = true;
+
+        private GridState state = GridState.Min;
+
+        public AnimationManager(Grid grid, Gap settings)
+        {
+            height = new Height(grid, settings);
+            height.Init();
+            width = new Width(grid, settings);
+            width.Init();
+
+            height.animation.animation.Completed += heightCompleted;
+            width.animation.animation.Completed += widthCompleted;
+        }
+
+        private void heightCompleted(object sender, EventArgs e)
+        {
+            isHeightComplete = true;
+
+            Notify();
+        }
+
+        private void widthCompleted(object sender, EventArgs e)
+        {
+            isWidthComplete = true;
+
+            Notify();
+        }
+        private void Notify()
+        {
+            if (checkSize())
+            {
+                sizeChanged.Invoke();
+            }
+        }
+
+        public bool checkSize()
+        {
+            return isHeightComplete && isWidthComplete;
+        }
+
+        public void setSize(GridState state)
+        {
+            if (checkSize() && this.state != state)
+            {
+                this.state = state;
+
+                isWidthComplete = false;
+                isHeightComplete = false;
+
+                width.Start(state);
+                height.Start(state);
+            }
         }
     }
 }
