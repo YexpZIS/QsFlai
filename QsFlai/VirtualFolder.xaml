@@ -24,25 +24,18 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Grid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Edit mode"/>
-                    <MenuItem Header="Close window"/>
-                </ContextMenu>
-            </Grid.ContextMenu>
             <Border Name="topBorder"  Background="#B2000000"/>
 
-            <Label  Name="windowName" Content="Name"  HorizontalAlignment="Center" Height="40" Foreground="White"  VerticalAlignment="Center"  FontSize="20" />
-            <TextBox Name="windowTextEdit" Text="Name" Background="#82000000"  Foreground="White"  FontSize="20" VerticalAlignment="Center" TextAlignment="Center" Opacity="0" IsEnabled="False">
+            <Label  Name="windowName" Content="Name"  HorizontalAlignment="Center" Height="40" Foreground="White"  VerticalAlignment="Center"  FontSize="20" IsEnabled="False"/>
+            <TextBox Name="windowTextEdit" Text="Name" Background="#82000000"  Foreground="White"  FontSize="20" VerticalAlignment="Center" TextAlignment="Center" Opacity="0" IsEnabled="True">
                 <!--MouseDoubleClick="Lable1_MouseDoubleClick" LostFocus="NameTextBox_LostFocus" KeyDown="Grid_KeyDown"  MouseMove="Grid_MouseMove"-->
-                <!--<TextBox.ContextMenu>
-                    <ContextMenu >
-                        <MenuItem Name="modeChanger" Header="Edit mode"/>
-                        Click="MenuItem_Click"
-                        <MenuItem Name="CloseWindow" Header="Close window"/>
-                        Click="CloseWindow_Click"
+                <TextBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Name="add" Header="Add window" Click="add_Click"/>
+                        <MenuItem Name="edit" Header="Edit mode" Click="edit_Click"/>
+                        <MenuItem Name="close" Header="Close window" Click="close_Click"/>
                     </ContextMenu>
-                </TextBox.ContextMenu>-->
+                </TextBox.ContextMenu>
             </TextBox>
         </Grid>
 

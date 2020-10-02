@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QsFlai.Preferences;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,8 +36,30 @@ namespace QsFlai
         {
             for (int i=0;i<settings.gaps.Count;i++)
             {
-                new VirtualFolder(i).Show();
+                showWindow(i);
             }
+        }
+        private static void showWindow(int index)
+        {
+            new VirtualFolder(index).Show();
+        }
+
+        public static void addNewWindow()
+        {
+            settings.gaps.Add(new Gap());
+            showWindow(settings.gaps.Count-1);
+
+            Save();
+        }
+        public static void removeWindow(int id)
+        {
+            settings.gaps.RemoveAt(id);
+            Save();
+        }
+
+        public static void Save()
+        {
+            settings.Save();
         }
     }
 }

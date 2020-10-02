@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 using Sys = System.IO.File;
 using System.Windows.Controls;
 
-namespace QsFlai
+namespace QsFlai.Preferences
 {
     public class Settings
     {
