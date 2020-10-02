@@ -39,6 +39,8 @@ namespace QsFlai
 
             backgroundPiner = new BackgroundPiner(this);
 
+            setWindowSize(settings.Scale.Final);
+
             gridSize = new GridSizeChanger(grid, settings);
             gridSize.sizeChanged += Size_Changed;
         }
@@ -53,6 +55,11 @@ namespace QsFlai
                 gridSize.setSize(GridState.Min);
             }
         }
+        private void setWindowSize(Size size)
+        {
+            this.Width = size.Width;
+            this.Height = size.Height;
+        }
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
             gridSize.setSize(GridState.Max);
@@ -64,16 +71,8 @@ namespace QsFlai
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-
+            setWindowSize(e.NewSize);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            backgroundPiner.HideFromAltTab();
-        }
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            backgroundPiner.ShoveToBackground();
-        }
     }
 }

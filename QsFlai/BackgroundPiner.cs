@@ -31,12 +31,15 @@ namespace QsFlai
         public BackgroundPiner(Window window)
         {
             this.window = window;
+
+            window.Loaded += HideFromAltTab;
+            window.Activated += ShoveToBackground;
         }
-        public void HideFromAltTab()
+        public void HideFromAltTab(object sender, RoutedEventArgs e)
         {
             SetWindowLong(Handle, GWL_EXSTYLE, GetWindowLong(Handle, GWL_EXSTYLE) | WS_EX_TOOLWINDOW);
         }
-        public void ShoveToBackground()
+        public void ShoveToBackground(object sender, EventArgs e)
         {
             SetWindowPos((int)this.Handle, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
         }

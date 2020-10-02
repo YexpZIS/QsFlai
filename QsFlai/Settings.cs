@@ -79,7 +79,7 @@ namespace QsFlai
     {
         // Статическую шириру/высоту можно получить при указании одинаковых значений в Initial и Final
         public Size Initial { get; set; } = new Size(120, 30); // Начальный размер (min)
-        public Size Final { get; set; } = new Size(450, 800); // Конечный размер (max)
+        public Size Final { get; set; } = new Size(800, 450); // Конечный размер (max)
     }
 
     public class Colors

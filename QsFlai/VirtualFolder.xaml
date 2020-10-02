@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QsFlai"
         mc:Ignorable="d"
-        Loaded="Window_Loaded" Activated="Window_Activated"
         SizeChanged="Window_SizeChanged"
         WindowStyle="None" AllowsTransparency="True" ShowInTaskbar="False"
         Background="Transparent"
@@ -25,19 +24,25 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Edit mode"/>
+                    <MenuItem Header="Close window"/>
+                </ContextMenu>
+            </Grid.ContextMenu>
             <Border Name="topBorder"  Background="#B2000000"/>
 
             <Label  Name="windowName" Content="Name"  HorizontalAlignment="Center" Height="40" Foreground="White"  VerticalAlignment="Center"  FontSize="20" />
             <TextBox Name="windowTextEdit" Text="Name" Background="#82000000"  Foreground="White"  FontSize="20" VerticalAlignment="Center" TextAlignment="Center" Opacity="0" IsEnabled="False">
                 <!--MouseDoubleClick="Lable1_MouseDoubleClick" LostFocus="NameTextBox_LostFocus" KeyDown="Grid_KeyDown"  MouseMove="Grid_MouseMove"-->
-                <TextBox.ContextMenu>
+                <!--<TextBox.ContextMenu>
                     <ContextMenu >
                         <MenuItem Name="modeChanger" Header="Edit mode"/>
-                        <!--Click="MenuItem_Click"-->
+                        Click="MenuItem_Click"
                         <MenuItem Name="CloseWindow" Header="Close window"/>
-                        <!--Click="CloseWindow_Click"-->
+                        Click="CloseWindow_Click"
                     </ContextMenu>
-                </TextBox.ContextMenu>
+                </TextBox.ContextMenu>-->
             </TextBox>
         </Grid>
 

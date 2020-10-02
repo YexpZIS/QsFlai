@@ -5,11 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QsFlai"
         mc:Ignorable="d"
-        Loaded="Window_Loaded" Activated="Window_Activated"
         WindowStyle="None" AllowsTransparency="True" ShowInTaskbar="False"
         Background="Transparent"
         Title="MainWindow" Height="0" Width="0" IsEnabled="False" Visibility="Hidden">
-    
     <Grid>
         
     </Grid>

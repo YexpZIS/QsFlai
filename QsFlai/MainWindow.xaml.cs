@@ -21,14 +21,13 @@ namespace QsFlai
     public partial class MainWindow : Window
     {
         public static Settings settings;
-        BackgroundPiner backgroundPiner;
 
         public MainWindow()
         {
             InitializeComponent();
 
             settings = new Settings();
-            backgroundPiner = new BackgroundPiner(this);
+            var backgroundPiner = new BackgroundPiner(this);
             CreateVirtualFolders();
         }
         
@@ -39,15 +38,5 @@ namespace QsFlai
                 new VirtualFolder(i).Show();
             }
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            backgroundPiner.HideFromAltTab();
-        }
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            backgroundPiner.ShoveToBackground();
-        }
-
     }
 }
