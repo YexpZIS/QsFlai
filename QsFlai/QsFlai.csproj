@@ -62,7 +62,6 @@
     <Compile Include="Animations\GridSize\GridState.cs" />
     <Compile Include="Animations\GridSize\Parties.cs" />
     <Compile Include="Animations\GridSize\Width.cs" />
-    <Compile Include="Animations\GridSize\WindowState.cs" />
     <Compile Include="Preferences\Settings.cs" />
     <Compile Include="Preferences\SettingsSetter.cs" />
     <Compile Include="Preferences\СustomizableObjects.cs" />

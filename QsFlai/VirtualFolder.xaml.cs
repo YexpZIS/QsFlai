@@ -1,4 +1,5 @@
-﻿using QsFlai.Animations.GridSize;
+﻿using Microsoft.Win32;
+using QsFlai.Animations.GridSize;
 using QsFlai.Preferences;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace QsFlai
         
         private Grid grid;
 
-        private State.WindowState state = State.WindowState.Normal;
+        private Size InitialScale;
 
         public VirtualFolder(int id)
         {
@@ -42,10 +43,11 @@ namespace QsFlai
             settings = MainWindow.settings.gaps[id];
             var objects = new СustomizableObjects(this,FolderPanel,windowName, windowTextEdit);
             setter = new SettingsSetter(settings, objects);
+            InitialScale = settings.Scale.Initial;
 
             var backgroundPiner = new BackgroundPiner(this);
 
-            gridSize = new GridSizeChanger(grid, settings);
+            gridSize = new GridSizeChanger(grid,ref settings);
             gridSize.sizeChanged += Size_Changed;
         }
         
@@ -58,7 +60,7 @@ namespace QsFlai
         /// <param name="e"></param>
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
-            gridChangeSize(GridState.Max);
+            gridSize.setSize(GridState.Max);
         }
         /// <summary>
         /// Когда курсор выходит из области Grid, то окно
@@ -68,7 +70,7 @@ namespace QsFlai
         /// <param name="e"></param>
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
-            gridChangeSize(GridState.Min);
+            gridSize.setSize(GridState.Min);
         }
         /// <summary>
         /// Если после того, как закончиласть анимация 
@@ -77,29 +79,13 @@ namespace QsFlai
         /// </summary>
         private void Size_Changed()
         {
-            if (grid.IsMouseOver)
-            {
-                gridChangeSize(GridState.Max);
-            }
-            else
-            {
-                gridChangeSize(GridState.Min);
-            }
-
-            if (state == State.WindowState.Edit)
+            if (grid.IsMouseOver || isEditable())
             {
                 gridSize.setSize(GridState.Max);
             }
-        }
-        /// <summary>
-        /// Изменяем размер если окно не находится в режиме редактирования
-        /// </summary>
-        /// <param name="GState"></param>
-        private void gridChangeSize(GridState GState)
-        {
-            if (state == State.WindowState.Normal) 
+            else
             {
-                gridSize.setSize(GState);
+                gridSize.setSize(GridState.Min);
             }
         }
 
@@ -112,17 +98,21 @@ namespace QsFlai
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
-            if (state == State.WindowState.Normal) 
+            if (isEditable()) 
             {
-                state = State.WindowState.Edit;
-                gridSize.setSize(GridState.Max);
-                // Start red animation + add comments ^ and refractor
+                settings.Scale.Initial = InitialScale;
+                Size_Changed();
             }
             else
             {
-                state = State.WindowState.Normal;
-                Size_Changed();
+                settings.Scale.Initial = settings.Scale.Final;
+                gridSize.setSize(GridState.Max);
+                // Start red animation + add comments ^ and refractor
             }
+        }
+        private bool isEditable()
+        {
+            return settings.Scale.Initial != InitialScale;
         }
 
         private void close_Click(object sender, RoutedEventArgs e)

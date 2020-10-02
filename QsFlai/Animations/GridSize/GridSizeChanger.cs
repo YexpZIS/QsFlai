@@ -18,7 +18,7 @@ namespace QsFlai.Animations.GridSize
 
         private GridState state = GridState.Min;
 
-        public GridSizeChanger(Grid grid, Gap settings)
+        public GridSizeChanger(Grid grid,ref Gap settings)
         {
             parties = new Parties[2] { new Height(grid, settings),
                                         new Width(grid, settings) };
