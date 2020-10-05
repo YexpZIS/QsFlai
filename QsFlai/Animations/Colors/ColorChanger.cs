@@ -4,15 +4,12 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace QsFlai.Animations.Colors
 {
-    class ColorChanger<T> where T :  class
+    class ColorChanger
     {
+<<<<<<< HEAD
         public ColorAnimation animation;
 
         private DependencyProperty property;
@@ -90,5 +87,7 @@ namespace QsFlai.Animations.Colors
         {
             return obj.GetType().GetProperty(property);
         }
+=======
+>>>>>>> master
     }
 }
