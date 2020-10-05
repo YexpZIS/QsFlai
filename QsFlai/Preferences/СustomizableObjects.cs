@@ -11,6 +11,7 @@ namespace QsFlai.Preferences
     class СustomizableObjects
     {
         public Window window { get; set; }
+        public Grid mainGrid { get; set; }
         public WrapPanel filesViewer { get; set; }
 
         public Label name { get; set; }
@@ -18,9 +19,10 @@ namespace QsFlai.Preferences
 
         public СustomizableObjects() { }
 
-        public СustomizableObjects(Window window, WrapPanel filesViewer, Label name, TextBox editableName)
+        public СustomizableObjects(Window window, Grid mainGrid ,WrapPanel filesViewer, Label name, TextBox editableName)
         {
             this.window = window;
+            this.mainGrid = mainGrid;
             this.filesViewer = filesViewer;
             this.name = name;
             this.editableName = editableName;

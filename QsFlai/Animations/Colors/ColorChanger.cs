@@ -16,17 +16,20 @@ namespace QsFlai.Animations.Colors
         private Gap settings;
 
         private Color[] colors;
+        private Color originalColor;
         private int index = 0;
 
         private bool isRun = false;
 
-        public ColorChanger(Gap settings, Color[] colors)
+        public ColorChanger(Gap settings,Preferences.Colors colors)
         {
             this.settings = settings;
-            this.colors = colors;
+            this.originalColor = colors.originalColor;
+            this.colors = colors.colors;
 
             animation = new BrushAnimation(settings.Animation.Speed);
             animation.animation.Completed += Animation_Completed;
+            animation.brush = new SolidColorBrush(originalColor);
         }
 
         private void Animation_Completed(object sender, EventArgs e)
@@ -35,6 +38,11 @@ namespace QsFlai.Animations.Colors
             {
                 index = index + 1 == colors.Length ? 0 : ++index;
                 animation.Begin(colors[index]);
+            }
+            else if(GetBrush().Color != originalColor)
+            {
+                // Возвращаем обьект к первоначальному цвету
+                animation.Begin(originalColor);
             }
         }
 

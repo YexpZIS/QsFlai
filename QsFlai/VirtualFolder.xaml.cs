@@ -29,7 +29,8 @@ namespace QsFlai
         private Gap settings;
         private SettingsSetter setter;
         private GridSizeChanger gridSize;
-        
+        private ColorChanger editMode;
+
         private Grid grid;
 
         private Size InitialScale;
@@ -43,7 +44,7 @@ namespace QsFlai
 
             settings = MainWindow.settings.gaps[id];
 
-            var objects = new СustomizableObjects(this,FolderPanel,windowName, windowTextEdit);
+            var objects = new СustomizableObjects(this, grid, FolderPanel, windowName, windowTextEdit);
             setter = new SettingsSetter(settings, objects);
             InitialScale = settings.Scale.Initial;
 
@@ -53,16 +54,8 @@ namespace QsFlai
             gridSize.sizeChanged += Size_Changed;
 
 
-            /// Test
-            //new ColorChanger<Grid>(grid, Grid.BackgroundProperty,32);
-            /*var c = new BrushAnimation(300);
-            c.Begin(Color.FromArgb(100,30,255,200));*/
-            var col = new ColorChanger(settings, new Color[] {Color.FromArgb(0, 0, 0, 0),
-                 Color.FromArgb(100, 255, 255, 255),
-                 Color.FromArgb(255, 100, 100, 100) });
-            grid.Background = col.GetBrush();
-            col.Begin();
-            /// Test
+            editMode = new ColorChanger(settings, settings.editMode);
+            grid.Background = editMode.GetBrush();
         }
 
 
@@ -114,14 +107,15 @@ namespace QsFlai
         {
             if (isEditable()) 
             {
+                editMode.Stop(); // Останавливает анимацию. Выход из режима редактирования
                 settings.Scale.Initial = InitialScale;
                 Size_Changed();
             }
             else
             {
-                settings.Scale.Initial = settings.Scale.Final;
+                settings.Scale.Initial = settings.Scale.Final; // Делаем окно однго размера. Указываем одинаковые размеры для начального и конечного размера окон.
                 gridSize.setSize(GridState.Max);
-                // Start red animation + add comments ^ and refractor
+                editMode.Begin(); // Запускает анимацию. Информирование пользователя о том, что окно находиться в режиме редактирования
             }
         }
         private bool isEditable()
@@ -136,11 +130,13 @@ namespace QsFlai
 
             if (result == MessageBoxResult.Yes)
             {
+                // Удаяем окно
                 MainWindow.removeWindow(id);
                 this.Close();
             }
             else if (result == MessageBoxResult.No) 
             {
+                // Скрываем окно
                 this.Close();
             }
         }

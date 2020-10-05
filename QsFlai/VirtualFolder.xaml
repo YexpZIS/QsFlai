@@ -23,6 +23,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Image x:Name="image" Stretch="None" />
+
         <Grid Grid.Row="0">
             <Border Name="topBorder"  Background="#B2000000"/>
 

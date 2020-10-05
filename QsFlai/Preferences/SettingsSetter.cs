@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace QsFlai.Preferences
 {
@@ -29,6 +30,8 @@ namespace QsFlai.Preferences
             setWindowName(settings.Name);
 
             loadFiles(settings.Files);
+
+            setGridImage();
         }
 
         private void setWindowSize(Size size)
@@ -45,6 +48,10 @@ namespace QsFlai.Preferences
         {
             objects.name.Content = name;
             objects.editableName.Text = name;
+        }
+        private void setGridImage()
+        {
+            // ToDo
         }
         private void loadFiles(List<File> files)
         {

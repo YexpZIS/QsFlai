@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 
 using Sys = System.IO.File;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace QsFlai.Preferences
 {
@@ -73,6 +74,11 @@ namespace QsFlai.Preferences
 
         // Files
         public List<File> Files { get; set; } = new List<File>(); // Список файлов, добавленных в окно
+
+        // Цвета editMode
+        public Colors editMode { get; set; } = new Colors(Color.FromArgb(100, 0, 0, 0),
+                new Color[] { Color.FromArgb(90, 255, 0, 0),
+                              Color.FromArgb(100, 0, 0, 0)});
     }
 
     public class Scale
@@ -84,8 +90,15 @@ namespace QsFlai.Preferences
 
     public class Colors
     {
-        /*public EditingMode="";
-        public WindowHeader;// Body Border + files color*/
+        public Color originalColor { get; set; } = Color.FromArgb(100, 0, 0, 0);
+        public Color[] colors { get; set; }
+
+        public Colors() { }
+        public Colors(Color originalColor, Color[] colors)
+        {
+            this.originalColor = originalColor;
+            this.colors = colors;
+        }
     }
 
     public class Animation
