@@ -42,7 +42,8 @@ namespace QsFlai
             this.grid = MainGrid;
 
             /// Test
-            new ColorChanger<Grid>(grid, Grid.BackgroundProperty,32);
+            var color = new ColorChanger<Grid>(grid, Grid.BackgroundProperty,32);
+            color.changeColor(Color.FromArgb(100, 12, 200, 100));
             /// Test
 
             settings = MainWindow.settings.gaps[id];
