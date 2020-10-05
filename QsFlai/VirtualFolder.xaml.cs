@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using QsFlai.Animations.Colors;
 using QsFlai.Animations.GridSize;
 using QsFlai.Preferences;
 using System;
@@ -40,7 +41,12 @@ namespace QsFlai
             this.id = id;
             this.grid = MainGrid;
 
+            /// Test
+            new ColorChanger<Grid>(grid, Grid.BackgroundProperty);
+            /// Test
+
             settings = MainWindow.settings.gaps[id];
+
             var objects = new СustomizableObjects(this,FolderPanel,windowName, windowTextEdit);
             setter = new SettingsSetter(settings, objects);
             InitialScale = settings.Scale.Initial;
