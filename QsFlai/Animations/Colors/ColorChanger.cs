@@ -34,6 +34,11 @@ namespace QsFlai.Animations.Colors
         {
             // Попробовать перписать класс Animation в abstract для 
             // переиспользовния его
+
+            /*///
+            var pro = animation.GetType().GetProperty((DoubleAnimation.FromProperty).Name);
+            pro.SetValue(animation, (double)size);
+            ///*/
         }
     }
 }

@@ -42,7 +42,7 @@ namespace QsFlai
             this.grid = MainGrid;
 
             /// Test
-            new ColorChanger<Grid>(grid, Grid.BackgroundProperty);
+            new ColorChanger<Grid>(grid, Grid.BackgroundProperty,32);
             /// Test
 
             settings = MainWindow.settings.gaps[id];
