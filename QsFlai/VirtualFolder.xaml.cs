@@ -41,13 +41,6 @@ namespace QsFlai
             this.id = id;
             this.grid = MainGrid;
 
-            /// Test
-            //new ColorChanger<Grid>(grid, Grid.BackgroundProperty,32);
-            var c = new BrushAnimation(300);
-            grid.Background = c.brush;
-            c.Begin(Color.FromArgb(100,30,255,200));
-            /// Test
-
             settings = MainWindow.settings.gaps[id];
 
             var objects = new СustomizableObjects(this,FolderPanel,windowName, windowTextEdit);
@@ -58,8 +51,20 @@ namespace QsFlai
 
             gridSize = new GridSizeChanger(grid,ref settings);
             gridSize.sizeChanged += Size_Changed;
+
+
+            /// Test
+            //new ColorChanger<Grid>(grid, Grid.BackgroundProperty,32);
+            /*var c = new BrushAnimation(300);
+            c.Begin(Color.FromArgb(100,30,255,200));*/
+            var col = new ColorChanger(settings, new Color[] {Color.FromArgb(0, 0, 0, 0),
+                 Color.FromArgb(100, 255, 255, 255),
+                 Color.FromArgb(255, 100, 100, 100) });
+            grid.Background = col.GetBrush();
+            col.Begin();
+            /// Test
         }
-        
+
 
         /// <summary>
         /// Когда курсор находится внутри Grid, то окно 

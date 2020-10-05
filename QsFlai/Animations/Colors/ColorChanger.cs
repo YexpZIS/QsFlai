@@ -1,93 +1,58 @@
-﻿using System;
+﻿using QsFlai.Preferences;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace QsFlai.Animations.Colors
 {
     class ColorChanger
     {
-<<<<<<< HEAD
-        public ColorAnimation animation;
+        private BrushAnimation animation;
 
-        private DependencyProperty property;
-        private T @object;
+        private Gap settings;
 
-        public ColorChanger(object obj, DependencyProperty property, int speed)
+        private Color[] colors;
+        private int index = 0;
+
+        private bool isRun = false;
+
+        public ColorChanger(Gap settings, Color[] colors)
         {
-            @object = obj as T;
-            this.property = property;
+            this.settings = settings;
+            this.colors = colors;
 
-            animation = new ColorAnimation();
-            animation.Duration = TimeSpan.FromMilliseconds(speed);
-
-            /*var pro = (obj as T).GetType().GetProperty(property.ToString());
-            pro.SetValue((obj as T), Brushes.Red);
-            //control.Background = Brushes.Red;*/
+            animation = new BrushAnimation(settings.Animation.Speed);
+            animation.animation.Completed += Animation_Completed;
         }
 
-        public void changeColor(Color color)
+        private void Animation_Completed(object sender, EventArgs e)
         {
-            // Попробовать перписать класс Animation в abstract для 
-            // переиспользовния его
-
-            /*///
-            var pro = animation.GetType().GetProperty((DoubleAnimation.FromProperty).Name);
-            pro.SetValue(animation, (double)size);
-            ///*/
-
-            AbstractObject o = new AbstractObject(animation);
-            AbstractObject obj = new AbstractObject(@object);
-            o.set("To",color);
-            //obj.set("BeginAnimation", new object []{property,animation});// animation.BeginAnimation(property,animation);
-            o.execute("BeginAnimation", new object[] { property, animation });
-        }
-    }
-
-    public class AbstractObject
-    {
-        public object obj;
-
-        public AbstractObject(object obj)
-        {
-            this.obj = obj;
+            if (isRun)
+            {
+                index = index + 1 == colors.Length ? 0 : ++index;
+                animation.Begin(colors[index]);
+            }
         }
 
-        public void execute(string method, object[] arguments)
+        public void Begin()
         {
-            GetMethod(method).Invoke(obj,arguments);
+            isRun = true;
+            index = 0;
+            animation.Begin(colors[index]);
         }
 
-        private MethodInfo GetMethod(string method)
+        public void Stop()
         {
-            return (MethodInfo) obj.GetType().GetMethods().Where(x=>x.Name == method).LastOrDefault();
+            isRun = false;
         }
 
-        public object get(DependencyProperty property)
+        public SolidColorBrush GetBrush()
         {
-            return get(property.ToString());
+            return animation.brush;
         }
-        public object get(String property)
-        {
-            return GetProperty(property).GetValue(obj);
-        }
-
-        public void set(DependencyProperty property, object value)
-        {
-            set(property.ToString(),value);
-        }
-        public void set(string property, object value)
-        {
-            GetProperty(property).SetValue(obj, value);
-        }
-
-        private PropertyInfo GetProperty(String property)
-        {
-            return obj.GetType().GetProperty(property);
-        }
-=======
->>>>>>> master
     }
 }
