@@ -51,7 +51,6 @@ namespace QsFlai.Preferences
             }
         }
 
-
     }
 
     // serialize List<Gaps>
@@ -79,6 +78,11 @@ namespace QsFlai.Preferences
         public Colors editMode { get; set; } = new Colors(Color.FromArgb(100, 0, 0, 0),
                 new Color[] { Color.FromArgb(90, 255, 0, 0),
                               Color.FromArgb(100, 0, 0, 0)});
+
+        public Gap DeepCopy()
+        {
+            return (Gap)this.MemberwiseClone();
+        }
     }
 
     public class Scale

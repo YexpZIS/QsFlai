@@ -15,11 +15,11 @@ namespace QsFlai.Animations.GridSize
         public DoubleAnimation animation;
 
         private DependencyProperty property;
-        private Grid grid;
+        private UIElement ement;
 
-        public Animation(Grid grid, DependencyProperty property, int AnimationSpeed)
+        public Animation(UIElement grid, DependencyProperty property, int AnimationSpeed)
         {
-            this.grid = grid;
+            this.ement = grid;
             this.property = property;
 
             animation = new DoubleAnimation();
@@ -31,15 +31,15 @@ namespace QsFlai.Animations.GridSize
             // Если grid не задать начального значения свойствам
             // (Height, Width), то вернет значение 'NaN'
 
-            var pro = grid.GetType().GetProperty(property.ToString());
-            pro.SetValue(grid, obj);
+            var pro = ement.GetType().GetProperty(property.ToString());
+            pro.SetValue(ement, obj);
         }
 
         public void Begin(int size)
         {
-            animation.From = (double)grid.GetValue(property);
+            animation.From = (double)ement.GetValue(property);
             animation.To = size;
-            grid.BeginAnimation(property, animation);
+            ement.BeginAnimation(property, animation);
         }
 
     }

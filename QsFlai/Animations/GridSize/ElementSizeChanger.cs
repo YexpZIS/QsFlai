@@ -1,14 +1,16 @@
-﻿using QsFlai.Preferences;
+﻿using QsFlai.Animations.GridSize.Module;
+using QsFlai.Preferences;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace QsFlai.Animations.GridSize
 {
-    public class GridSizeChanger
+    public class ElementSizeChanger
     {
         public delegate void SizeChanged();
         public SizeChanged sizeChanged;
@@ -16,12 +18,12 @@ namespace QsFlai.Animations.GridSize
         private Parties[] parties;
         private bool[] isAnimationComplete = new bool[2] { true, true };
 
-        private GridState state = GridState.Min;
+        private SizeState state = SizeState.Min;
 
-        public GridSizeChanger(Grid grid,ref Gap settings)
+        public ElementSizeChanger(ref Gap settings, UIElement element)
         {
-            parties = new Parties[2] { new Height(grid, settings),
-                                        new Width(grid, settings) };
+            parties = new Parties[2] { new Height(settings, element),
+                                        new Width(settings, element) };
 
             for (int i = 0; i < parties.Length; i++) 
             {
@@ -63,7 +65,7 @@ namespace QsFlai.Animations.GridSize
             return result;
         }
 
-        public void setSize(GridState state)
+        public void setSize(SizeState state)
         {
             if (checkSize() && this.state != state)
             {

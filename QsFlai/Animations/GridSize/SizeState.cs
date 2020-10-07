@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace QsFlai.Animations.GridSize
 {
-    public enum GridState
+    public enum SizeState
     {
         Max,
         Min

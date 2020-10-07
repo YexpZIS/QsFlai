@@ -7,25 +7,23 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace QsFlai.Animations.GridSize
+namespace QsFlai.Animations.GridSize.Module
 {
-    class Height : Parties
+    public class Width : Parties
     {
-        public Height(Grid grid, Gap settings) : base(grid, settings)
+        public Width(Gap settings, UIElement element) : base(settings, element)
         { }
 
         public override void Initialization()
         {
-            animation = new Animation(grid, Grid.HeightProperty, settings.Animation.Speed);
-            animation.setDefaultValue(settings.Scale.Initial.Height);
+            animation = new Animation(element, Grid.WidthProperty, settings.Animation.Speed);
+            animation.setDefaultValue(settings.Scale.Initial.Width);
             animation.animation.Completed += Animation_Completed;
         }
 
         protected override void changeSize(Size size)
         {
-            animation.Begin((int)size.Height);
+            animation.Begin((int)size.Width);
         }
     }
-
-    
 }

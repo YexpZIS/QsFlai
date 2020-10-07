@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace QsFlai.Animations.GridSize
+namespace QsFlai.Animations.GridSize.Module
 {
     public abstract class Parties
     {
         public Animation animation;
 
-        protected Grid grid;
+        protected UIElement element;
         protected Gap settings;
 
         public bool isAnimationComplite = true;
 
-        public Parties(Grid grid, Gap settings)
+        public Parties(Gap settings, UIElement grid)
         {
-            this.grid = grid;
+            this.element = grid;
             this.settings = settings;
         }
 
@@ -31,11 +31,11 @@ namespace QsFlai.Animations.GridSize
             isAnimationComplite = true;
         }
 
-        public void Start(GridState realState)
+        public void Start(SizeState realState)
         {
             isAnimationComplite = false;
 
-            if (realState == GridState.Max)
+            if (realState == SizeState.Max)
             {
                 changeSize(settings.Scale.Final);
             }

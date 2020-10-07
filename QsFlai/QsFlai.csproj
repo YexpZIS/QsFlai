@@ -56,15 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="VirtualFolderModuls\AnimationGridController.cs" />
     <Compile Include="Animations\Colors\BrushAnimation.cs" />
     <Compile Include="Animations\Colors\ColorChanger.cs" />
     <Compile Include="Animations\GridSize\Animation.cs" />
-    <Compile Include="Animations\GridSize\GridSizeChanger.cs" />
-    <Compile Include="Animations\GridSize\Height.cs" />
-    <Compile Include="Animations\GridSize\GridState.cs" />
-    <Compile Include="Animations\GridSize\Parties.cs" />
-    <Compile Include="Animations\GridSize\Width.cs" />
-    <Compile Include="MovingWindow.cs" />
+    <Compile Include="Animations\GridSize\ElementSizeChanger.cs" />
+    <Compile Include="Animations\GridSize\Module\Height.cs" />
+    <Compile Include="Animations\GridSize\SizeState.cs" />
+    <Compile Include="Animations\GridSize\Module\Parties.cs" />
+    <Compile Include="Animations\GridSize\Module\Width.cs" />
+    <Compile Include="VirtualFolderModuls\MovingWindow.cs" />
     <Compile Include="Preferences\Settings.cs" />
     <Compile Include="Preferences\SettingsSetter.cs" />
     <Compile Include="Preferences\СustomizableObjects.cs" />
@@ -83,7 +84,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BackgroundPiner.cs" />
+    <Compile Include="VirtualFolderModuls\BackgroundPiner.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

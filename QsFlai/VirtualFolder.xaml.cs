@@ -28,12 +28,12 @@ namespace QsFlai
         private readonly int id;
 
         private Gap settings;
-        private GridSizeChanger gridSize;
-        private ColorChanger editMode;
+        /*private GridSizeChanger gridSize;
+        private ColorChanger editMode;*/
 
         private Grid grid;
 
-        private Size InitialScale;
+        //private Size InitialScale;
 
         public VirtualFolder(int id)
         {
@@ -50,18 +50,19 @@ namespace QsFlai
 
             var backgroundPiner = new BackgroundPiner(this);
 
-            gridSize = new GridSizeChanger(grid,ref settings);
+            /*gridSize = new GridSizeChanger(ref settings, grid);
             gridSize.sizeChanged += Size_Changed;
 
 
             editMode = new ColorChanger(settings, settings.editMode);
-            grid.Background = editMode.GetBrush();
+            grid.Background = editMode.GetBrush();*/
+
+            var animations = new AnimationGridController(settings, MainGrid, edit);
         }
         private void setDefaultSettings()
         {
             var objects = new СustomizableObjects(this, grid, FolderPanel, windowName, windowTextEdit);
             var setter = new SettingsSetter(settings, objects);
-            InitialScale = settings.Scale.Initial;
         }
         private void addMoveEvent()
         {
@@ -69,7 +70,7 @@ namespace QsFlai
         }
 
 
-        /// <summary>
+        /*/// <summary>
         /// Когда курсор находится внутри Grid, то окно 
         /// увеличивается в размере до settings.Scale.Final
         /// </summary>
@@ -108,10 +109,7 @@ namespace QsFlai
 
 
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            //setWindowSize(e.NewSize);
-        }
+        
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
@@ -131,7 +129,7 @@ namespace QsFlai
         private bool isEditable()
         {
             return settings.Scale.Initial != InitialScale;
-        }
+        }*/
 
         private void close_Click(object sender, RoutedEventArgs e)
         {
@@ -156,5 +154,9 @@ namespace QsFlai
             MainWindow.addNewWindow();
         }
 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //setWindowSize(e.NewSize);
+        }
     }
 }

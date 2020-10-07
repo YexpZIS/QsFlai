@@ -14,7 +14,8 @@
         <WindowChrome CaptionHeight="5"/>
     </WindowChrome.WindowChrome>
 
-    <Grid Name="MainGrid" VerticalAlignment="Top" MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
+    <Grid Name="MainGrid" VerticalAlignment="Top" >
+        <!--MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave"-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -39,7 +40,8 @@
                 <TextBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Name="add" Header="Add window" Click="add_Click"/>
-                        <MenuItem Name="edit" Header="Edit mode" Click="edit_Click"/>
+                        <MenuItem Name="edit" Header="Edit mode" />
+                        <!--Click="edit_Click"-->
                         <MenuItem Name="close" Header="Close window" Click="close_Click"/>
                     </ContextMenu>
                 </TextBox.ContextMenu>
