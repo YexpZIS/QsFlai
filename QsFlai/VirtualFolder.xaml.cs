@@ -27,7 +27,6 @@ namespace QsFlai
         private readonly int id;
 
         private Gap settings;
-        private SettingsSetter setter;
         private GridSizeChanger gridSize;
         private ColorChanger editMode;
 
@@ -44,9 +43,9 @@ namespace QsFlai
 
             settings = MainWindow.settings.gaps[id];
 
-            var objects = new СustomizableObjects(this, grid, FolderPanel, windowName, windowTextEdit);
-            setter = new SettingsSetter(settings, objects);
-            InitialScale = settings.Scale.Initial;
+            setDefaultSettings();
+
+            addMoveEvent();
 
             var backgroundPiner = new BackgroundPiner(this);
 
@@ -56,6 +55,16 @@ namespace QsFlai
 
             editMode = new ColorChanger(settings, settings.editMode);
             grid.Background = editMode.GetBrush();
+        }
+        private void setDefaultSettings()
+        {
+            var objects = new СustomizableObjects(this, grid, FolderPanel, windowName, windowTextEdit);
+            var setter = new SettingsSetter(settings, objects);
+            InitialScale = settings.Scale.Initial;
+        }
+        private void addMoveEvent()
+        {
+            var move = new MovingWindow(ref settings, this, windowTextEdit);
         }
 
 
@@ -145,5 +154,24 @@ namespace QsFlai
         {
             MainWindow.addNewWindow();
         }
+
+        /*private void DragMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                try
+                {
+                    this.DragMove();
+                }
+                catch { }
+            }
+            
+        }
+
+        private void MouseLeave(object sender, MouseEventArgs e)
+        {
+            settings.Position = new Point(this.Left, this.Top);
+            MainWindow.Save();
+        }*/
     }
 }

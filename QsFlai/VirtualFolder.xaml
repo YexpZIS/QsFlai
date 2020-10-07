@@ -29,7 +29,12 @@
             <Border Name="topBorder"  Background="#B2000000"/>
 
             <Label  Name="windowName" Content="Name"  HorizontalAlignment="Center" Height="40" Foreground="White"  VerticalAlignment="Center"  FontSize="20" IsEnabled="False"/>
-            <TextBox Name="windowTextEdit" Text="Name" Background="#82000000"  Foreground="White"  FontSize="20" VerticalAlignment="Center" TextAlignment="Center" Opacity="0" IsEnabled="True">
+            <TextBox Name="windowTextEdit" Text="Name" Background="#82000000" 
+                     Foreground="White"  FontSize="20" VerticalAlignment="Center" 
+                     TextAlignment="Center" Opacity="0" IsEnabled="True"
+                     >
+                <!--MouseMove="DragMove"
+                     MouseLeave="MouseLeave"-->
                 <!--MouseDoubleClick="Lable1_MouseDoubleClick" LostFocus="NameTextBox_LostFocus" KeyDown="Grid_KeyDown"  MouseMove="Grid_MouseMove"-->
                 <TextBox.ContextMenu>
                     <ContextMenu>

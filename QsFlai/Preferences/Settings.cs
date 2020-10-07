@@ -59,7 +59,7 @@ namespace QsFlai.Preferences
     {
         public string Name { get; set; } = "Window"; // Название окна
 
-        public string BackgroundImage { get; set; } //(base64) Изображение на подложке типа постер 
+        public string BackgroundImage { get; set; } // Путь к изображению типа постер 
         //(при увеличении/уменьшении окна 
         //не должно меняться в размерах)
 
