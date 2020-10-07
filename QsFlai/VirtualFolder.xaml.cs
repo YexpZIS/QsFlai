@@ -2,6 +2,7 @@
 using QsFlai.Animations.Colors;
 using QsFlai.Animations.GridSize;
 using QsFlai.Preferences;
+using QsFlai.VirtualFolderModuls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -155,23 +156,5 @@ namespace QsFlai
             MainWindow.addNewWindow();
         }
 
-        /*private void DragMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                try
-                {
-                    this.DragMove();
-                }
-                catch { }
-            }
-            
-        }
-
-        private void MouseLeave(object sender, MouseEventArgs e)
-        {
-            settings.Position = new Point(this.Left, this.Top);
-            MainWindow.Save();
-        }*/
     }
 }

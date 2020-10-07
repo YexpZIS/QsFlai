@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Interop;
 using System.Windows;
 
-namespace QsFlai
+namespace QsFlai.VirtualFolderModuls
 {
     class BackgroundPiner
     {
