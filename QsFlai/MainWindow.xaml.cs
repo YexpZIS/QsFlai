@@ -47,15 +47,26 @@ namespace QsFlai
 
         public static void addNewWindow()
         {
-            settings.gaps.Add(new Gap());
+            int id = getNextWindowId();
+
+            settings.gaps.Add(new Gap(id));
             showWindow(settings.gaps.Count-1);
 
             Save();
         }
+        public static int getNextWindowId()
+        {
+            return settings.gaps.Count;
+        }
         public static void removeWindow(int id)
         {
-            settings.gaps.RemoveAt(id);
-            Save();
+            var gap = settings.gaps.Where(x=>x.id == id).First();
+
+            if (gap != null)
+            {
+                settings.gaps.Remove(gap);
+                Save();
+            }
         }
 
         public static void Save()

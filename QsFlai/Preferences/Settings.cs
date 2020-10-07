@@ -27,8 +27,7 @@ namespace QsFlai.Preferences
         {
             path = Directory.GetCurrentDirectory();
             fullname = String.Format("{0}/{1}", path, name);
-            gaps = new List<Gap>();
-
+            
             Load();
         }
 
@@ -43,19 +42,32 @@ namespace QsFlai.Preferences
             {
                 string json = Sys.ReadAllText(fullname);
                 gaps = JsonConvert.DeserializeObject<List<Gap>>(json);
+
+                if (gaps == null || gaps.Count == 0)
+                {
+                    gaps = new List<Gap>();
+                    gaps.Add(new Gap(0));
+                }
             }
             else
             {
-                gaps.Add(new Gap());
+                gaps.Add(new Gap(0));
                 Save();
             }
         }
 
     }
 
-    // serialize List<Gaps>
+    [Serializable]
     public class Gap 
     {
+        public int id { get; set; }
+
+        public Gap(int id)
+        {
+            this.id = id;
+        }
+
         public string Name { get; set; } = "Window"; // Название окна
 
         public string BackgroundImage { get; set; } // Путь к изображению типа постер 
@@ -81,7 +93,10 @@ namespace QsFlai.Preferences
 
         public Gap DeepCopy()
         {
-            return (Gap)this.MemberwiseClone();
+            var gap = (Gap)this.MemberwiseClone();
+            gap.Scale = this.Scale.DeepCopy();
+
+            return gap;
         }
     }
 
@@ -90,6 +105,11 @@ namespace QsFlai.Preferences
         // Статическую шириру/высоту можно получить при указании одинаковых значений в Initial и Final
         public Size Initial { get; set; } = new Size(120, 30); // Начальный размер (min)
         public Size Final { get; set; } = new Size(800, 450); // Конечный размер (max)
+    
+        public Scale DeepCopy()
+        {
+            return (Scale)this.MemberwiseClone();
+        }
     }
 
     public class Colors
