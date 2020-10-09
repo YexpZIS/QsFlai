@@ -48,7 +48,7 @@ namespace QsFlai
         }
         private void setDefaultSettings()
         {
-            var objects = new СustomizableObjects(this, grid, ref image, FolderPanel, windowName, windowTextEdit);
+            var objects = new СustomizableObjects(this, grid, ref image, FolderPanel, windowName, windowTextEdit, topBorder);
             var setter = new SettingsSetter(settings, objects);
         }
         private void addMoveEvent()

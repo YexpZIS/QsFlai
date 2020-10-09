@@ -32,6 +32,7 @@ namespace QsFlai.Preferences
 
             loadFiles(settings.Files);
 
+            setBorderColor();
             setGridImage();
         }
 
@@ -69,6 +70,11 @@ namespace QsFlai.Preferences
             }
             catch { }
         }
+        private void setBorderColor()
+        {
+            objects.border.Background = new SolidColorBrush(settings.borderColor);
+        }
+
         private void loadFiles(List<File> files)
         {
             /*foreach (File file in files)

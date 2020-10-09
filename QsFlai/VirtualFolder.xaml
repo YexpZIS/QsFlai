@@ -42,7 +42,6 @@
                     <ContextMenu>
                         <MenuItem Name="add" Header="Add window" Click="add_Click"/>
                         <MenuItem Name="edit" Header="Edit mode" />
-                        <!--Click="edit_Click"-->
                         <MenuItem Name="close" Header="Close window" Click="close_Click"/>
                     </ContextMenu>
                 </TextBox.ContextMenu>
@@ -51,7 +50,7 @@
 
         <Grid x:Name="folderPlace" Grid.Row="1"  AllowDrop="True" Background="#72000000">
             <!--DragEnter="Grid_DragEnter" Drop="Grid_Drop"-->
-            <Border Name="border"  BorderThickness="5" BorderBrush="#00EE1702" />
+            <Border Name="border"  BorderThickness="5" BorderBrush="Transparent" />
 
             <ScrollViewer >
                 <WrapPanel Name="FolderPanel" Orientation="Horizontal">
@@ -59,7 +58,7 @@
                 </WrapPanel>
             </ScrollViewer>
 
-            <TextBlock Name="systemState" Text="Edit mode" Foreground="#00EE1702" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <!--<TextBlock Name="systemState" Text="Edit mode" Foreground="#00EE1702" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
 
         </Grid>
     </Grid>

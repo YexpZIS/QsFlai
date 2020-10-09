@@ -92,6 +92,8 @@ namespace QsFlai.Preferences
                 new Color[] { Color.FromArgb(90, 255, 0, 0),
                               Color.FromArgb(100, 0, 0, 0)});
 
+        public Color borderColor { get; set; } = Color.FromArgb(70,0,0,0);
+
         public Gap DeepCopy()
         {
             var gap = (Gap)this.MemberwiseClone();
