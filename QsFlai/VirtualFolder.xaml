@@ -24,7 +24,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="image" Stretch="None" />
+        <Image x:Name="image" Grid.RowSpan="2" 
+               Stretch="Uniform" />
 
         <Grid Grid.Row="0">
             <Border Name="topBorder"  Background="#B2000000"/>
@@ -52,7 +53,7 @@
             <!--DragEnter="Grid_DragEnter" Drop="Grid_Drop"-->
             <Border Name="border"  BorderThickness="5" BorderBrush="#00EE1702" />
 
-            <ScrollViewer>
+            <ScrollViewer >
                 <WrapPanel Name="FolderPanel" Orientation="Horizontal">
                     <!--<Frame Source="Folder/Folder.xaml" NavigationUIVisibility="Hidden" />-->
                 </WrapPanel>

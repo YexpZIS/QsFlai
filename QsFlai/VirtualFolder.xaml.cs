@@ -44,11 +44,11 @@ namespace QsFlai
             addMoveEvent();
 
             var backgroundPiner = new BackgroundPiner(this);
-            var animations = new AnimationGridController(settings, MainGrid, edit);
+            var animations = new AnimationGridController(settings, MainGrid, folderPlace, edit);
         }
         private void setDefaultSettings()
         {
-            var objects = new СustomizableObjects(this, grid, FolderPanel, windowName, windowTextEdit);
+            var objects = new СustomizableObjects(this, grid, ref image, FolderPanel, windowName, windowTextEdit);
             var setter = new SettingsSetter(settings, objects);
         }
         private void addMoveEvent()

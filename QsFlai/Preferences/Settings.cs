@@ -73,6 +73,7 @@ namespace QsFlai.Preferences
         public string BackgroundImage { get; set; } // Путь к изображению типа постер 
         //(при увеличении/уменьшении окна 
         //не должно меняться в размерах)
+        public bool isImgStaticSize = true;
 
         // Position
         public Point Position { get; set; } = new Point(0, 0); // Положение окна по оси X и Y

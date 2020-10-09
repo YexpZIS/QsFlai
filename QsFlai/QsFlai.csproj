@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Preferences\ImageLoader.cs" />
     <Compile Include="VirtualFolderModuls\AnimationGridController.cs" />
     <Compile Include="Animations\Colors\BrushAnimation.cs" />
     <Compile Include="Animations\Colors\ColorChanger.cs" />
@@ -122,6 +123,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

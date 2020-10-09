@@ -22,7 +22,7 @@ namespace QsFlai.VirtualFolderModuls
 
         private Size InitialScale;
 
-        public AnimationGridController(Gap settings, UIElement element, MenuItem button)
+        public AnimationGridController(Gap settings, UIElement element, UIElement color, MenuItem button)
         {
             // создать дубликат settings при сожранении 
             // может потерятся Inital width т.к. мы ее изменяем (this.Meshure)(deepcopy)
@@ -45,7 +45,7 @@ namespace QsFlai.VirtualFolderModuls
             // Пользователь меняет рамер элемента по нажатию кнопки
             button.Click += edit_Click;
             // Устанавливаем цвет элемента, который будет менять цвет
-            (element as Grid).Background = colorChanger.GetBrush();
+            (color as Grid).Background = colorChanger.GetBrush();
         }
 
         /// <summary>

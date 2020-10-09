@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace QsFlai.Preferences
 {
@@ -51,7 +52,22 @@ namespace QsFlai.Preferences
         }
         private void setGridImage()
         {
-            // ToDo
+            var img = objects.image;
+
+            if (settings.isImgStaticSize)
+            {
+                var size = settings.Scale.Final;
+
+                img.Width = size.Width;
+                img.Height = size.Height;
+            }
+
+            try
+            {
+                var loader = new ImageLoader(ref img);
+                loader.LoadImage(settings.BackgroundImage);
+            }
+            catch { }
         }
         private void loadFiles(List<File> files)
         {
