@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QsFlai"
+        xmlns:control="clr-namespace:QsFlai.UserControls"
         mc:Ignorable="d"
         SizeChanged="Window_SizeChanged"
         WindowStyle="None" AllowsTransparency="True" ShowInTaskbar="False"
@@ -28,24 +29,25 @@
                Stretch="Uniform" />
 
         <Grid Grid.Row="0">
-            <Border Name="topBorder"  Background="#B2000000"/>
+            <!--<Border Name="topBorder"  Background="#B2000000"/>-->
 
-            <Label  Name="windowName" Content="Name"  HorizontalAlignment="Center" Height="40" Foreground="White"  VerticalAlignment="Center"  FontSize="20" IsEnabled="False"/>
+            <control:EditableLabel x:Name="windowName"/>
+            <!--<Label  Name="windowName" Content="Name"  HorizontalAlignment="Center" Height="40" Foreground="White"  VerticalAlignment="Center"  FontSize="20" IsEnabled="False"/>
             <TextBox Name="windowTextEdit" Text="Name" Background="#82000000" 
                      Foreground="White"  FontSize="20" VerticalAlignment="Center" 
                      TextAlignment="Center" Opacity="0" IsEnabled="True"
-                     >
+                     >-->
                 <!--MouseMove="DragMove"
                      MouseLeave="MouseLeave"-->
                 <!--MouseDoubleClick="Lable1_MouseDoubleClick" LostFocus="NameTextBox_LostFocus" KeyDown="Grid_KeyDown"  MouseMove="Grid_MouseMove"-->
-                <TextBox.ContextMenu>
+                <!--<TextBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Name="add" Header="Add window" Click="add_Click"/>
                         <MenuItem Name="edit" Header="Edit mode" />
                         <MenuItem Name="close" Header="Close window" Click="close_Click"/>
                     </ContextMenu>
                 </TextBox.ContextMenu>
-            </TextBox>
+            </TextBox>-->
         </Grid>
 
         <Grid x:Name="folderPlace" Grid.Row="1"  AllowDrop="True" Background="#72000000">

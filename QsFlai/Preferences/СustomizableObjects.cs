@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QsFlai.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,21 +16,19 @@ namespace QsFlai.Preferences
         public Image image { get; set; }
         public WrapPanel filesViewer { get; set; }
 
-        public Label name { get; set; }
-        public TextBox editableName { get; set; }
+        public EditableLabel editableName { get; set; }
 
         public Border border { get; set; }
 
         public СustomizableObjects() { }
 
         public СustomizableObjects(Window window, Grid mainGrid ,ref Image image ,WrapPanel filesViewer,
-            Label name, TextBox editableName, Border border)
+            EditableLabel editableName, Border border)
         {
             this.window = window;
             this.mainGrid = mainGrid;
             this.image = image;
             this.filesViewer = filesViewer;
-            this.name = name;
             this.editableName = editableName;
             this.border = border;
         }

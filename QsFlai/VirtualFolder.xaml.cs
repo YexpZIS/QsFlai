@@ -40,23 +40,28 @@ namespace QsFlai
 
             settings = MainWindow.settings.gaps[id];
 
+            setupWindowNameElement();
             setDefaultSettings();
             addMoveEvent();
 
             var backgroundPiner = new BackgroundPiner(this);
-            var animations = new AnimationGridController(settings, MainGrid, folderPlace, edit);
+            var animations = new AnimationGridController(settings, MainGrid, folderPlace, windowName.edit);
         }
         private void setDefaultSettings()
         {
-            var objects = new СustomizableObjects(this, grid, ref image, FolderPanel, windowName, windowTextEdit, topBorder);
+            var objects = new СustomizableObjects(this, grid, ref image, FolderPanel, windowName,  windowName.border);
             var setter = new SettingsSetter(settings, objects);
         }
         private void addMoveEvent()
         {
-            var move = new MovingWindow(ref settings, this, windowTextEdit);
+            var move = new MovingWindow(ref settings, this, windowName);
+        }
+        private void setupWindowNameElement()
+        {
+            windowName.Constructor(this, id);
         }
 
-        private void close_Click(object sender, RoutedEventArgs e)
+        /*private void close_Click(object sender, RoutedEventArgs e)
         {
             var result =MessageBox.Show("Удалить данное окно?\n\nНет - закрыть окно.\nДа - удалить окно.\nОтмена - не закрывать окно.",
                 "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
@@ -78,7 +83,7 @@ namespace QsFlai
         {
             MainWindow.addNewWindow();
         }
-
+        */
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             //setWindowSize(e.NewSize);

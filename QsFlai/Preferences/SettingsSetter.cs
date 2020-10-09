@@ -48,8 +48,7 @@ namespace QsFlai.Preferences
         }
         private void setWindowName(string name)
         {
-            objects.name.Content = name;
-            objects.editableName.Text = name;
+            objects.editableName.setText(name);
         }
         private void setGridImage()
         {
