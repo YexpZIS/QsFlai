@@ -22,12 +22,12 @@ namespace QsFlai.Preferences
         private readonly string fullname;
 
         public List<Gap> gaps;
-        
+
         public Settings()
         {
             path = Directory.GetCurrentDirectory();
             fullname = String.Format("{0}/{1}", path, name);
-            
+
             Load();
         }
 
@@ -59,7 +59,7 @@ namespace QsFlai.Preferences
     }
 
     [Serializable]
-    public class Gap 
+    public class Gap
     {
         public int id { get; set; }
 
@@ -68,7 +68,7 @@ namespace QsFlai.Preferences
             this.id = id;
         }
 
-        public string Name { get; set; } = "Window"; // Название окна
+        public TopBorder border = new TopBorder();
 
         public string BackgroundImage { get; set; } // Путь к изображению типа постер 
         //(при увеличении/уменьшении окна 
@@ -92,8 +92,6 @@ namespace QsFlai.Preferences
                 new Color[] { Color.FromArgb(90, 255, 0, 0),
                               Color.FromArgb(100, 0, 0, 0)});
 
-        public Color borderColor { get; set; } = Color.FromArgb(70,0,0,0);
-
         public Gap DeepCopy()
         {
             var gap = (Gap)this.MemberwiseClone();
@@ -103,6 +101,16 @@ namespace QsFlai.Preferences
         }
     }
 
+    public class TopBorder 
+    {
+        public string Name { get; set; } = "Window"; // Название окна
+        public Color BorderColor { get; set; } = Color.FromArgb(70, 0, 0, 0); // Цвет верхней полоски
+        public Color TextColor { get; set; } = Color.FromArgb(100, 255, 255, 255);
+        public FontFamily FontFamily { get; set; } = new FontFamily("Segoe UI");
+        public double FontSize { get; set; } = 20;
+        public int Height { get; set; } = 40;
+    }
+        
     public class Scale
     {
         // Статическую шириру/высоту можно получить при указании одинаковых значений в Initial и Final

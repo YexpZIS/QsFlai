@@ -28,11 +28,10 @@ namespace QsFlai.Preferences
             setWindowSize(settings.Scale.Final);
             setWindowPosition(settings.Position);
 
-            setWindowName(settings.Name);
+            setBorderSettings(settings.border);
 
             loadFiles(settings.Files);
 
-            setBorderColor();
             setGridImage();
         }
 
@@ -46,9 +45,15 @@ namespace QsFlai.Preferences
             objects.window.Left = position.X;
             objects.window.Top = position.Y;
         }
-        private void setWindowName(string name)
+        private void setBorderSettings(TopBorder border)
         {
-            objects.editableName.setText(name);
+            var edit = objects.editableName;
+
+            edit.setText(border.Name);
+            edit.border.Background = new SolidColorBrush(settings.border.BorderColor);
+            edit.setTextColor(border.TextColor);
+            edit.setTextFontFamily(border.FontFamily);
+            edit.setFontSize(border.FontSize, border.Height);
         }
         private void setGridImage()
         {
@@ -68,10 +73,6 @@ namespace QsFlai.Preferences
                 loader.LoadImage(settings.BackgroundImage);
             }
             catch { }
-        }
-        private void setBorderColor()
-        {
-            objects.border.Background = new SolidColorBrush(settings.borderColor);
         }
 
         private void loadFiles(List<File> files)
