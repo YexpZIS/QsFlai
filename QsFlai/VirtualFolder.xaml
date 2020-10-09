@@ -16,7 +16,6 @@
     </WindowChrome.WindowChrome>
 
     <Grid Name="MainGrid" VerticalAlignment="Top" >
-        <!--MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave"-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -25,30 +24,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="image" Grid.RowSpan="2" 
-               Stretch="Uniform" />
+        <Image x:Name="image" Grid.RowSpan="2" Stretch="Uniform" />
 
-        <Grid Grid.Row="0">
-            <!--<Border Name="topBorder"  Background="#B2000000"/>-->
-
-            <control:EditableLabel x:Name="windowName"/>
-            <!--<Label  Name="windowName" Content="Name"  HorizontalAlignment="Center" Height="40" Foreground="White"  VerticalAlignment="Center"  FontSize="20" IsEnabled="False"/>
-            <TextBox Name="windowTextEdit" Text="Name" Background="#82000000" 
-                     Foreground="White"  FontSize="20" VerticalAlignment="Center" 
-                     TextAlignment="Center" Opacity="0" IsEnabled="True"
-                     >-->
-                <!--MouseMove="DragMove"
-                     MouseLeave="MouseLeave"-->
-                <!--MouseDoubleClick="Lable1_MouseDoubleClick" LostFocus="NameTextBox_LostFocus" KeyDown="Grid_KeyDown"  MouseMove="Grid_MouseMove"-->
-                <!--<TextBox.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Name="add" Header="Add window" Click="add_Click"/>
-                        <MenuItem Name="edit" Header="Edit mode" />
-                        <MenuItem Name="close" Header="Close window" Click="close_Click"/>
-                    </ContextMenu>
-                </TextBox.ContextMenu>
-            </TextBox>-->
-        </Grid>
+        <control:EditableLabel x:Name="windowName" Grid.Row="0"/>
 
         <Grid x:Name="folderPlace" Grid.Row="1"  AllowDrop="True" Background="#72000000">
             <!--DragEnter="Grid_DragEnter" Drop="Grid_Drop"-->
@@ -59,8 +37,6 @@
                     <!--<Frame Source="Folder/Folder.xaml" NavigationUIVisibility="Hidden" />-->
                 </WrapPanel>
             </ScrollViewer>
-
-            <!--<TextBlock Name="systemState" Text="Edit mode" Foreground="#00EE1702" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
 
         </Grid>
     </Grid>

@@ -61,29 +61,6 @@ namespace QsFlai
             windowName.Constructor(this, id);
         }
 
-        /*private void close_Click(object sender, RoutedEventArgs e)
-        {
-            var result =MessageBox.Show("Удалить данное окно?\n\nНет - закрыть окно.\nДа - удалить окно.\nОтмена - не закрывать окно.",
-                "Предупреждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                // Удаяем окно
-                MainWindow.removeWindow(id);
-                this.Close();
-            }
-            else if (result == MessageBoxResult.No) 
-            {
-                // Скрываем окно
-                this.Close();
-            }
-        }
-
-        private void add_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.addNewWindow();
-        }
-        */
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             //setWindowSize(e.NewSize);

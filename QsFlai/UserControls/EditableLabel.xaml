@@ -14,7 +14,6 @@
                  MouseDoubleClick="Textbox_MouseDoubleClick"   LostFocus="textbox_LostFocus"
                  Background="#82000000" Foreground="White" 
                  FontSize="20" Style="{StaticResource textCenter}">
-            <!--MouseLeave="Textbox_MouseLeave"-->
             <TextBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Name="add" Header="Add window" Click="add_Click"/>
