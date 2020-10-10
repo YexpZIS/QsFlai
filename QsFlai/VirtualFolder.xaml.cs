@@ -38,7 +38,7 @@ namespace QsFlai
             this.id = id;
             this.grid = MainGrid;
 
-            settings = MainWindow.settings.gaps[id];
+            settings = MainWindow.settings.gaps.Where(x=>x.id == id).First();
 
             setupWindowNameElement();
             setDefaultSettings();
@@ -49,7 +49,7 @@ namespace QsFlai
         }
         private void setDefaultSettings()
         {
-            var objects = new СustomizableObjects(this, grid, ref image, FolderPanel, windowName,  windowName.border);
+            var objects = new СustomizableObjects(this, grid, ref image, FolderPanel, windowName,  windowName.border, topBorderHeight);
             var setter = new SettingsSetter(settings, objects);
         }
         private void addMoveEvent()
@@ -58,7 +58,7 @@ namespace QsFlai
         }
         private void setupWindowNameElement()
         {
-            windowName.Constructor(this, id);
+            windowName.Constructor(settings, this, id);
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

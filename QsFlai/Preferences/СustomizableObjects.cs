@@ -19,11 +19,12 @@ namespace QsFlai.Preferences
         public EditableLabel editableName { get; set; }
 
         public Border border { get; set; }
+        public RowDefinition borderHeight { get; set; }
 
         public СustomizableObjects() { }
 
         public СustomizableObjects(Window window, Grid mainGrid ,ref Image image ,WrapPanel filesViewer,
-            EditableLabel editableName, Border border)
+            EditableLabel editableName, Border border, RowDefinition borderHeight)
         {
             this.window = window;
             this.mainGrid = mainGrid;
@@ -31,6 +32,7 @@ namespace QsFlai.Preferences
             this.filesViewer = filesViewer;
             this.editableName = editableName;
             this.border = border;
+            this.borderHeight = borderHeight;
         }
 
     }

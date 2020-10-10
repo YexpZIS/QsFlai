@@ -53,7 +53,9 @@ namespace QsFlai.Preferences
             edit.border.Background = new SolidColorBrush(settings.border.BorderColor);
             edit.setTextColor(border.TextColor);
             edit.setTextFontFamily(border.FontFamily);
-            edit.setFontSize(border.FontSize, border.Height);
+            edit.setFontSize(border.FontSize, border.TextHeight);
+
+            objects.borderHeight.Height = new GridLength(border.BorderHeight);
         }
         private void setGridImage()
         {

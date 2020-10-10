@@ -104,11 +104,12 @@ namespace QsFlai.Preferences
     public class TopBorder 
     {
         public string Name { get; set; } = "Window"; // Название окна
-        public Color BorderColor { get; set; } = Color.FromArgb(70, 0, 0, 0); // Цвет верхней полоски
-        public Color TextColor { get; set; } = Color.FromArgb(100, 255, 255, 255);
+        public Color BorderColor { get; set; } = Color.FromArgb(128, 0, 0, 0); // Цвет верхней полоски
+        public Color TextColor { get; set; } = Color.FromArgb(255, 255, 255, 255);
         public FontFamily FontFamily { get; set; } = new FontFamily("Segoe UI");
         public double FontSize { get; set; } = 20;
-        public int Height { get; set; } = 40;
+        public int TextHeight { get; set; } = 40;
+        public int BorderHeight { get; set; } = 30;
     }
         
     public class Scale

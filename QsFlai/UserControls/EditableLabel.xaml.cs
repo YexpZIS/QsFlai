@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QsFlai.Preferences;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace QsFlai.UserControls
     /// </summary>
     public partial class EditableLabel : UserControl
     {
+        private Gap settings;
         private Window window;
         private int id;
 
@@ -28,8 +30,9 @@ namespace QsFlai.UserControls
             InitializeComponent();
         }
         
-        public void Constructor(Window window, int id)
+        public void Constructor(Gap settings,Window window, int id)
         {
+            this.settings = settings;
             this.window = window;
             this.id = id;
         }
@@ -44,6 +47,9 @@ namespace QsFlai.UserControls
         {
             label.Content = text;
             textbox.Text = text;
+
+            settings.border.Name = text;
+            MainWindow.Save();
         }
         public string getText()
         {
@@ -57,10 +63,10 @@ namespace QsFlai.UserControls
         {
             label.FontFamily = font;
         }
-        public void setFontSize(double size, int heigth)
+        public void setFontSize(double size, int textHeigth)
         {
             label.FontSize = size;
-            label.Height = heigth;
+            label.Height = textHeigth;
         }
 
         private void close_Click(object sender, RoutedEventArgs e)

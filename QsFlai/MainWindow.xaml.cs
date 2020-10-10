@@ -35,9 +35,12 @@ namespace QsFlai
         
         private void CreateVirtualFolders()
         {
+            int id = 0;
+
             for (int i=0;i<settings.gaps.Count;i++)
             {
-                showWindow(i);
+                id = settings.gaps[i].id;
+                showWindow(id);
             }
         }
         private static void showWindow(int index)
@@ -50,13 +53,13 @@ namespace QsFlai
             int id = getNextWindowId();
 
             settings.gaps.Add(new Gap(id));
-            showWindow(settings.gaps.Count-1);
+            showWindow(id);
 
             Save();
         }
         public static int getNextWindowId()
         {
-            return settings.gaps.Count;
+            return settings.gaps.OrderByDescending(x=>x.id).First().id + 1;
         }
         public static void removeWindow(int id)
         {
