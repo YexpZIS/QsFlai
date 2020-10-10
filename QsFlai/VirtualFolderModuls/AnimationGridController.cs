@@ -106,5 +106,12 @@ namespace QsFlai.VirtualFolderModuls
                 colorChanger.Begin(); // Запускает анимацию. Информирование пользователя о том, что окно находиться в режиме редактирования
             }
         }
+
+        public void changeSize(Size size)
+        {
+            settingsCopy.Scale.Initial = size;
+            settingsCopy.Scale.Final = size;
+            elementSize.setSizeUnchecked(SizeState.Max);
+        }
     }
 }

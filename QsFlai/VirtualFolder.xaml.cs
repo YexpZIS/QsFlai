@@ -30,6 +30,7 @@ namespace QsFlai
         private Gap settings;
         private Grid grid;
 
+        private AnimationGridController animations;
 
         public VirtualFolder(int id)
         {
@@ -45,7 +46,7 @@ namespace QsFlai
             addMoveEvent();
 
             var backgroundPiner = new BackgroundPiner(this);
-            var animations = new AnimationGridController(settings, MainGrid, folderPlace, windowName.edit);
+            animations = new AnimationGridController(settings, MainGrid, folderPlace, windowName.edit);
         }
         private void setDefaultSettings()
         {
@@ -63,7 +64,24 @@ namespace QsFlai
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //setWindowSize(e.NewSize);
+            var size = e.NewSize;
+            if (settings.Scale.Final != size) {
+                animations.changeSize(size);
+                setWindowSize(size);
+            }
         }
+        private void setWindowSize(Size size)
+        {
+            this.Width = size.Width;
+            this.Height = size.Height;
+
+            MainGrid.Width = size.Width;
+            MainGrid.Height = size.Height;
+
+            settings.Scale.Final = size;
+
+            MainWindow.Save();
+        }
+
     }
 }

@@ -48,9 +48,11 @@ namespace QsFlai.Animations.Colors
 
         public void Begin()
         {
-            isRun = true;
-            index = 0;
-            animation.Begin(colors[index]);
+            if (!isRun) {
+                isRun = true;
+                index = 0;
+                animation.Begin(colors[index]);
+            }
         }
 
         public void Stop()

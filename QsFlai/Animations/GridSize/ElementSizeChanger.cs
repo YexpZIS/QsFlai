@@ -69,13 +69,17 @@ namespace QsFlai.Animations.GridSize
         {
             if (checkSize() && this.state != state)
             {
-                this.state = state;
+                setSizeUnchecked(state);
+            }
+        }
+        public void setSizeUnchecked(SizeState state)
+        {
+            this.state = state;
 
-                for (int i = 0; i < parties.Length; i++)
-                {
-                    isAnimationComplete[i] = false;
-                    parties[i].Start(state);
-                }
+            for (int i = 0; i < parties.Length; i++)
+            {
+                isAnimationComplete[i] = false;
+                parties[i].Start(state);
             }
         }
     }
