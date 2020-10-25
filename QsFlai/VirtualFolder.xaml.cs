@@ -107,17 +107,23 @@ namespace QsFlai
             }
             else
             {
-                file.id = settings.Files.OrderByDescending(x=>x.id).First().id;
+                file.id = settings.Files.OrderByDescending(x => x.id).First().id + 1;
             }
 
             file.Link = link;
 
             settings.Files.Add(file);
-            FolderPanel.Children.Add(new Folder(settings.filesSettings, file));
+            FolderPanel.Children.Add(new Folder(this, settings.filesSettings, file));
         }
-        public void removeFile()
+        public void removeFile(int id, Folder ui)
         {
+            var folder = settings.Files.Where(x=>x.id==id).First();
 
+            if (folder != null)
+            {
+                settings.Files.Remove(folder);
+                FolderPanel.Children.Remove(ui);
+            }
         }
     }
 }

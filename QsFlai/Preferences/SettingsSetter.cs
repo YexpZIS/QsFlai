@@ -82,7 +82,7 @@ namespace QsFlai.Preferences
             foreach (File file in files)
             {
                 //FolderPanel
-                objects.filesViewer.Children.Add(new UserControls.Folder(settings.filesSettings ,file));
+                objects.filesViewer.Children.Add(new UserControls.Folder(objects.window as VirtualFolder, settings.filesSettings ,file));
             }
         }
 

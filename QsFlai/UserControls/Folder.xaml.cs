@@ -24,17 +24,19 @@ namespace QsFlai.UserControls
     /// </summary>
     public partial class Folder : UserControl
     {
+        private VirtualFolder virtualFolder;
         private File file;
         private ProcessManager process;
         private FilesSettings settings;
 
-        public Folder(FilesSettings settings,File file)
+        public Folder(VirtualFolder virtualFolder, FilesSettings settings,File file)
         {
             InitializeComponent();
 
             process = new ProcessManager(file.Link);
             this.settings = settings;
             this.file = file;
+            this.virtualFolder = virtualFolder;
 
             setDefaultSettings();
             loadImg();
@@ -103,6 +105,11 @@ namespace QsFlai.UserControls
         {
             // Open file
             process.StartProcess();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            virtualFolder.removeFile(file.id, this);
         }
     }
 }
