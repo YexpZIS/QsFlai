@@ -5,14 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QsFlai.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="70">
+             d:DesignHeight="110" d:DesignWidth="80">
     <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
             <RowDefinition/>
+            <RowDefinition x:Name="block" Height="40"/>
         </Grid.RowDefinitions>
+        
+        <Border Background="#66000000" Grid.RowSpan="2"/>
 
-        <Image Name="logo"/>
-        <Label Name="name" Content="File" Grid.Row="1" Style="{StaticResource labelCenter}"/>
+        <Image Name="logo" Source="../Images/folder.png"/>
+        <TextBlock Name="name" Foreground="White" FontSize="15" FontFamily="Agency FB" Text="File dfgsdfgs" TextWrapping="Wrap" Grid.Row="1" Style="{StaticResource textblockCenter}"/>
     </Grid>
 </UserControl>

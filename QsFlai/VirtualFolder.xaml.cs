@@ -56,7 +56,7 @@ namespace QsFlai
         }
         private void addMoveEvent()
         {
-            var move = new MovingWindow(ref settings, this, windowName);
+            var move = new MovingWindow(ref settings, this, windowName.border);
         }
         private void setupWindowNameElement()
         {

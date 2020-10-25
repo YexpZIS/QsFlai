@@ -34,7 +34,7 @@ namespace QsFlai.UserControls
             var img = new ImageLoader(ref logo);
             img.LoadImage(file.Image);
 
-            name.Content = String.IsNullOrEmpty(file.Name) ? getFileName(file.Link) : file.Name;
+            name.Text = String.IsNullOrEmpty(file.Name) ? getFileName(file.Link) : file.Name;
         }
 
         private string getFileName(string path)// Вынести в отдельный модуль

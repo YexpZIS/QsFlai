@@ -148,4 +148,11 @@ namespace QsFlai.Preferences
         public string Image { get; set; } //Изображение в формате Base64
         public string Link { get; set; } // Ссылка на файл
     }
+
+    public class FilesSettings
+    {
+        public Size Size { get; set; } = new Size(80, 110);
+        public double blockHeight { get; set; } = 40;
+
+    }
 }

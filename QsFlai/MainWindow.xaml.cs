@@ -63,8 +63,6 @@ namespace QsFlai
 
             settings.gaps.Add(new Gap(id));
             showWindow(id);
-
-            Save();
         }
         public static int getNextWindowId()
         {

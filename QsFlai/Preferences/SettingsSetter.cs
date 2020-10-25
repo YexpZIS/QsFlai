@@ -79,11 +79,11 @@ namespace QsFlai.Preferences
 
         private void loadFiles(List<File> files)
         {
-            /*foreach (File file in files)
+            foreach (File file in files)
             {
-                objects.filesViewer.Children.Add(new Element(file));
-            }*/
-            //FolderPanel
+                //FolderPanel
+                objects.filesViewer.Children.Add(new UserControls.Folder(file));
+            }
         }
 
     }
