@@ -3,6 +3,7 @@ using QsFlai.VirtualFolderModuls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,12 +25,14 @@ namespace QsFlai
     {
         public static Settings settings;
         private static List<VirtualFolder> folders;
+        private static Window window;
 
         public MainWindow()
         {
             InitializeComponent();
 
             folders = new List<VirtualFolder>();
+            window = this;
 
             settings = new Settings();
             var backgroundPiner = new BackgroundPiner(this);
@@ -79,6 +82,13 @@ namespace QsFlai
         }
         public static void Reboot()
         {
+            CloseAll();
+
+            settings.Load();
+            CreateVirtualFolders();
+        }
+        private static void CloseAll()
+        {
             foreach (var f in folders)
             {
                 try
@@ -89,13 +99,15 @@ namespace QsFlai
             }
 
             folders.Clear();
-
-            settings.Load();
-            CreateVirtualFolders();
         }
         public static void Save()
         {
             settings.Save();
+        }
+        public static void Exit()
+        {
+            CloseAll();
+            window.Close();
         }
     }
 }

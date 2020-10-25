@@ -49,7 +49,6 @@ namespace QsFlai.UserControls
             textbox.Text = text;
 
             settings.border.Name = text;
-            MainWindow.Save();
         }
         public string getText()
         {
@@ -101,6 +100,16 @@ namespace QsFlai.UserControls
         private void reboot_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.Reboot();
+        }
+
+        private void shutdown_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Exit();
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Save();
         }
     }
 }

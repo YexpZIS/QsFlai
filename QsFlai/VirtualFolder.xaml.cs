@@ -80,8 +80,6 @@ namespace QsFlai
             MainGrid.Height = size.Height;
 
             settings.Scale.Final = size;
-
-            MainWindow.Save();
         }
 
     }

@@ -16,11 +16,13 @@
                  FontSize="20" Style="{StaticResource textCenter}">
             <TextBox.ContextMenu>
                 <ContextMenu>
+                    <!--вынести все по 3 в подпункты-->
                     <MenuItem Name="add" Header="Add window" Click="add_Click"/>
                     <MenuItem Name="edit" Header="Edit mode" />
                     <MenuItem Name="close" Header="Close window" Click="close_Click"/>
                     <MenuItem Name="reboot" Header="Reload app" Click="reboot_Click"/>
-                    <MenuItem Name="shutdown" Header="Shutdown app" />
+                    <MenuItem Name="shutdown" Header="Shutdown app" Click="shutdown_Click" />
+                    <MenuItem Name="save" Header="Save" Click="save_Click" />
                 </ContextMenu>
             </TextBox.ContextMenu>
         </TextBox>

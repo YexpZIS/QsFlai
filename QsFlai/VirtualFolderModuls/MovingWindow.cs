@@ -24,7 +24,6 @@ namespace QsFlai.VirtualFolderModuls
 
             element.MouseMove += MoveWindow;
             element.MouseLeave += SetPosition;
-            //window.Closed += Save;
         }
 
         public void MoveWindow(object sender, MouseEventArgs e)
@@ -51,11 +50,6 @@ namespace QsFlai.VirtualFolderModuls
             {
                 settings.Position = point;
             }
-        }
-
-        public void Save(object sender, EventArgs e)
-        {
-            MainWindow.Save();
         }
     }
 }
