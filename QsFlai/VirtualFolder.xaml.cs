@@ -2,6 +2,7 @@
 using QsFlai.Animations.Colors;
 using QsFlai.Animations.GridSize;
 using QsFlai.Preferences;
+using QsFlai.UserControls;
 using QsFlai.VirtualFolderModuls;
 using System;
 using System.Collections.Generic;
@@ -82,5 +83,41 @@ namespace QsFlai
             settings.Scale.Final = size;
         }
 
+        private void MainGrid_Drop(object sender, DragEventArgs e)
+        {
+            string[] files=(string[])e.Data.GetData(DataFormats.FileDrop);
+
+            if (files != null)
+            {
+                foreach (string f in files)
+                {
+                    addFiles(f);
+                }
+            }
+        }
+
+        public void addFiles(string link)
+        {
+
+            Preferences.File file = new File();
+
+            if (settings.Files.Count == 0)
+            {
+                file.id = 0;
+            }
+            else
+            {
+                file.id = settings.Files.OrderByDescending(x=>x.id).First().id;
+            }
+
+            file.Link = link;
+
+            settings.Files.Add(file);
+            FolderPanel.Children.Add(new Folder(settings.filesSettings, file));
+        }
+        public void removeFile()
+        {
+
+        }
     }
 }

@@ -85,6 +85,7 @@ namespace QsFlai.Preferences
         public Animation Animation { get; set; } = new Animation();// Отвечает за настройки анимации
 
         // Files
+        public FilesSettings filesSettings { get; set; } = new FilesSettings();
         public List<File> Files { get; set; } = new List<File>(); // Список файлов, добавленных в окно
 
         // Цвета editMode
@@ -144,6 +145,7 @@ namespace QsFlai.Preferences
 
     public class File
     {
+        public int id { get; set; }
         public string Name { get; set; } // Название файла
         public string Image { get; set; } //Изображение в формате Base64
         public string Link { get; set; } // Ссылка на файл
@@ -153,6 +155,18 @@ namespace QsFlai.Preferences
     {
         public Size Size { get; set; } = new Size(80, 110);
         public double blockHeight { get; set; } = 40;
+
+        public Thickness Margin { get; set; } = new Thickness(1);
+
+        // Text
+        public Color TextColor { get; set; } = Color.FromArgb(255, 255, 255, 255);
+        public FontFamily FontFamily { get; set; } = new FontFamily("Agency FB");
+        public double FontSize { get; set; } = 20;
+
+        // Border
+        public Color BackgroundColor { get; set; } = Color.FromArgb(128, 0, 0, 0);
+        public Color BorderColor { get; set; } = Color.FromArgb(255, 0, 0, 0);
+        public Thickness BorderSize { get; set; } = new Thickness(1);
 
     }
 }

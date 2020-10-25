@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:QsFlai.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="110" d:DesignWidth="80">
-    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+    <Grid x:Name="grid" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Margin="1">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition x:Name="block" Height="40"/>
         </Grid.RowDefinitions>
         
-        <Border Background="#66000000" Grid.RowSpan="2"/>
+        <Border x:Name="border" Background="#66000000" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2"/>
 
         <Image Name="logo" Source="../Images/folder.png"/>
         <TextBlock Name="name" Foreground="White" FontSize="15" FontFamily="Agency FB" Text="File dfgsdfgs" TextWrapping="Wrap" Grid.Row="1" Style="{StaticResource textblockCenter}"/>

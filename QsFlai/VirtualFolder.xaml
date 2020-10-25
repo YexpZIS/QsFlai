@@ -15,7 +15,7 @@
         <WindowChrome CaptionHeight="5"/>
     </WindowChrome.WindowChrome>
 
-    <Grid Name="MainGrid" VerticalAlignment="Top" >
+    <Grid Name="MainGrid" VerticalAlignment="Top" DragDrop.Drop="MainGrid_Drop">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>

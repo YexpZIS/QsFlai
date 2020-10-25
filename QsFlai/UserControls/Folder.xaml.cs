@@ -24,17 +24,74 @@ namespace QsFlai.UserControls
     /// </summary>
     public partial class Folder : UserControl
     {
+        private File file;
         private ProcessManager process;
-        public Folder(File file)
+        private FilesSettings settings;
+
+        public Folder(FilesSettings settings,File file)
         {
             InitializeComponent();
 
             process = new ProcessManager(file.Link);
+            this.settings = settings;
+            this.file = file;
 
+            setDefaultSettings();
+            loadImg();
+        }
+        private void loadImg()
+        {
             var img = new ImageLoader(ref logo);
-            img.LoadImage(file.Image);
 
+            var path = "";
+
+            if (file.Image != "" && file.Image != null)
+            {
+                path = file.Image;
+
+                try
+                {
+                    img.LoadImage(path);
+                }
+                catch { }
+            }
+            else
+            {
+                var uri = new Uri(file.Link);
+
+                if (uri.IsFile)
+                {
+                    try
+                    {
+                        img.LoadIcon(file.Link);
+                    }
+                    catch { }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            
+        }
+
+        private void setDefaultSettings()
+        {
             name.Text = String.IsNullOrEmpty(file.Name) ? getFileName(file.Link) : file.Name;
+
+            border.Background = new SolidColorBrush(settings.BackgroundColor);
+            border.BorderBrush = new SolidColorBrush(settings.BorderColor);
+            border.BorderThickness = settings.BorderSize;
+
+            name.Foreground = new SolidColorBrush(settings.TextColor);
+            name.FontFamily = settings.FontFamily;
+            name.FontSize = settings.FontSize;
+
+            grid.Width = settings.Size.Width;
+            grid.Height = settings.Size.Height;
+            grid.Margin = settings.Margin;
+
+            block.Height = new GridLength(settings.blockHeight);
         }
 
         private string getFileName(string path)// Вынести в отдельный модуль
