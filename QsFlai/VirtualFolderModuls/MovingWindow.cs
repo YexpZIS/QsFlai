@@ -23,7 +23,8 @@ namespace QsFlai.VirtualFolderModuls
             this.element = element;
 
             element.MouseMove += MoveWindow;
-            element.MouseLeave += SavePosition;
+            element.MouseLeave += SetPosition;
+            //window.Closed += Save;
         }
 
         public void MoveWindow(object sender, MouseEventArgs e)
@@ -33,14 +34,27 @@ namespace QsFlai.VirtualFolderModuls
                 if (!e.Handled) // ? Событие еще не обработано другим событием ? 
                 {
                     // Если убрать данную проверку по возникают трудно уловимые ошибки
-                    window.DragMove();
+                    try
+                    {
+                        window.DragMove();
+                    }
+                    catch { }
                 }
 
             }
         }
-        public void SavePosition(object sender, MouseEventArgs e)
+        public void SetPosition(object sender, MouseEventArgs e)
         {
-            settings.Position = new Point(window.Left, window.Top);
+            var point = new Point(window.Left, window.Top);
+
+            if (!settings.Position.Equals(point))
+            {
+                settings.Position = point;
+            }
+        }
+
+        public void Save(object sender, EventArgs e)
+        {
             MainWindow.Save();
         }
     }

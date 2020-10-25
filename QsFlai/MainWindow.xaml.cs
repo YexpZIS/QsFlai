@@ -23,17 +23,20 @@ namespace QsFlai
     public partial class MainWindow : Window
     {
         public static Settings settings;
+        private static List<VirtualFolder> folders;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            folders = new List<VirtualFolder>();
 
             settings = new Settings();
             var backgroundPiner = new BackgroundPiner(this);
             CreateVirtualFolders();
         }
         
-        private void CreateVirtualFolders()
+        private static void CreateVirtualFolders()
         {
             int id = 0;
 
@@ -45,7 +48,10 @@ namespace QsFlai
         }
         private static void showWindow(int index)
         {
-            new VirtualFolder(index).Show();
+            var f = new VirtualFolder(index);
+            folders.Add(f);
+
+            f.Show();
         }
 
         public static void addNewWindow()
@@ -71,7 +77,22 @@ namespace QsFlai
                 Save();
             }
         }
+        public static void Reboot()
+        {
+            foreach (var f in folders)
+            {
+                try
+                {
+                    f.Close();
+                }
+                catch { }
+            }
 
+            folders.Clear();
+
+            settings.Load();
+            CreateVirtualFolders();
+        }
         public static void Save()
         {
             settings.Save();

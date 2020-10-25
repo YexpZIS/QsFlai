@@ -48,6 +48,7 @@ namespace QsFlai
             var backgroundPiner = new BackgroundPiner(this);
             animations = new AnimationGridController(settings, MainGrid, folderPlace, windowName.edit);
         }
+
         private void setDefaultSettings()
         {
             var objects = new СustomizableObjects(this, grid, ref image, FolderPanel, windowName,  windowName.border, topBorderHeight);

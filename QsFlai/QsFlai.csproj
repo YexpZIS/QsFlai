@@ -61,9 +61,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FolderModuls\ProcessManager.cs" />
     <Compile Include="Preferences\ImageLoader.cs" />
     <Compile Include="UserControls\EditableLabel.xaml.cs">
       <DependentUpon>EditableLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Folder.xaml.cs">
+      <DependentUpon>Folder.xaml</DependentUpon>
     </Compile>
     <Compile Include="VirtualFolderModuls\AnimationGridController.cs" />
     <Compile Include="Animations\Colors\BrushAnimation.cs" />
@@ -99,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\EditableLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Folder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

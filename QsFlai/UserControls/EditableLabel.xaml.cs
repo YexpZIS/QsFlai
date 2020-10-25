@@ -97,5 +97,10 @@ namespace QsFlai.UserControls
             textbox.Opacity = 0;
             setText(textbox.Text);
         }
+
+        private void reboot_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Reboot();
+        }
     }
 }
