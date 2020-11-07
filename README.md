@@ -98,7 +98,32 @@ QsFlai
 Рассмотрим каждый параметор отдельно.
 
 1. ```"id":"0"``` - любое целое число от -100 000 до 100 000
-2. ```"border":{"Name":"Window","BorderColor":"#80000000","TextColor":"#FFFFFFFF","FontFamily":"Segoe UI","FontSize":20.0,"TextHeight":40,"BorderHeight":30}``` <br>
-    2.1 ```"Name":"Window"``` - Название окна <br>
-    2.2 ```"BorderColor":"#80000000"``` - Цвет верхней части окна
-    ![BorderColor](source/doc/BorderColor.jpg)
+2. ```"border":{"Name":"Window","BorderColor":"#80000000","TextColor":"#FFFFFFFF","FontFamily":"Segoe UI","FontSize":20.0,"TextHeight":40,"BorderHeight":30}``` 
+
+    2.1 ```"Name":"Window"``` - Название окна 
+
+    2.2 ```"BorderColor":"#80000000"``` - Цвет верхней части окна 
+
+    ![BorderColor](source/doc/BorderColor.jpg) 
+
+    2.3 ```"TextColor":"#FFFFFFFF"``` - Цвет названия окна
+
+    ![TextColor](source/doc/TextColor.jpg)
+
+    2.4 ```"FontFamily":"Segoe UI"``` - Шрифт названия окна
+
+    ![FontFamily](source/doc/FontFamily.jpg)
+
+    2.5 ```"FontSize":20.0``` и ```"TextHeight":40``` редактируются вместе т.к. 'Label' не умеет работать с размерами шрифтов.
+
+    2.5.1 ```"FontSize":20.0``` - Размер шрифта
+
+    2.5.2 ```"TextHeight":40``` - Высота 'Label'
+
+    ![FontSize&TextHeight](source/doc/FontSize&TextHeight.jpg)
+
+    2.6 ```"BorderHeight":30``` - Высота верхней части окна (Вместе с данным параметром нужно менять значение ````Scale":{"Initial":"...,30"``` в блоке ```"Scale":{}```. Эти два значения в большинстве случаев должны совпадать.)
+
+    ![BorderHeight](source/doc/BorderHeight.jpg)
+
+3. ```"BackgroundImage":""``` - Изображение на заднем плане окна. Изображение должно находиться в одной папке с приложением.
