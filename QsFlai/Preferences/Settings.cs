@@ -51,6 +51,7 @@ namespace QsFlai.Preferences
             }
             else
             {
+                gaps = new List<Gap>();
                 gaps.Add(new Gap(0));
                 Save();
             }
