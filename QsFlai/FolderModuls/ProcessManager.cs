@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace QsFlai.FolderModuls
 {
@@ -12,16 +13,29 @@ namespace QsFlai.FolderModuls
         ProcessStartInfo procStartInfo;
         Process proc;
 
+        bool isExists = true;
+
         public ProcessManager(string fileName)
         {
-            procStartInfo = new ProcessStartInfo("explorer", fileName);
-            proc = new Process();
-            proc.StartInfo = procStartInfo;
+            try
+            {
+                procStartInfo = new ProcessStartInfo("explorer", fileName);
+                proc = new Process();
+                proc.StartInfo = procStartInfo;
+            }
+            catch { isExists = false; }
         }
 
         public void StartProcess()
         {
-            proc.Start();
+            if (isExists) 
+            {
+                proc.Start();
+            }
+            else
+            {
+                MessageBox.Show("Файла не существует.","Ошибка");
+            }
         }
     }
 }

@@ -39,23 +39,21 @@ namespace QsFlai.UserControls
             this.virtualFolder = virtualFolder;
 
             setDefaultSettings();
-            loadImg();
+
+            try
+            {
+                loadImg();
+            }
+            catch { }
         }
         private void loadImg()
         {
             var img = new ImageLoader(ref logo);
 
-            var path = "";
-
             if (file.Image != "" && file.Image != null)
             {
-                path = file.Image;
-
-                try
-                {
-                    img.LoadImage(path);
-                }
-                catch { }
+                var path = file.Image;
+                img.LoadImage(path);
             }
             else
             {
@@ -63,11 +61,7 @@ namespace QsFlai.UserControls
 
                 if (uri.IsFile)
                 {
-                    try
-                    {
-                        img.LoadIcon(file.Link);
-                    }
-                    catch { }
+                    img.LoadIcon(file.Link);
                 }
                 else
                 {
