@@ -23,8 +23,8 @@ namespace QsFlai
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Settings settings;
-        private static List<VirtualFolder> folders;
+        public static Settings settings; // Глобальные настройки
+        private static List<VirtualFolder> folders; // Экземпляры виртуальных папок
         private static Window window;
 
         public MainWindow()
@@ -78,6 +78,10 @@ namespace QsFlai
                 Save();
             }
         }
+
+        /// <summary>
+        /// Перезагружаем 'виртуальные папки'. Нужно для повторного считвыания config и обновления окон
+        /// </summary>
         public static void Reboot()
         {
             CloseAll();
@@ -102,6 +106,10 @@ namespace QsFlai
         {
             settings.Save();
         }
+
+        /// <summary>
+        /// Полностью закрываем приложение
+        /// </summary>
         public static void Exit()
         {
             CloseAll();

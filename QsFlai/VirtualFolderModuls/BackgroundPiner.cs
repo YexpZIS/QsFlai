@@ -9,6 +9,9 @@ using System.Windows;
 
 namespace QsFlai.VirtualFolderModuls
 {
+    /// <summary>
+    /// Закрепляет окно на рабочем столе, прячет из трея, игнорирует Alt+Tab
+    /// </summary>
     class BackgroundPiner
     {
         Window window;

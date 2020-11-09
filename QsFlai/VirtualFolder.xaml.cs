@@ -22,13 +22,13 @@ using State = QsFlai.Animations.GridSize;
 namespace QsFlai
 {
     /// <summary>
-    /// Логика взаимодействия для VirtualFolder.xaml
+    /// 'Виртуальная папка'
     /// </summary>
     public partial class VirtualFolder : Window
     {
         private readonly int id;
 
-        private Gap settings;
+        private Gap settings; 
         private Grid grid;
 
         private AnimationGridController animations;
