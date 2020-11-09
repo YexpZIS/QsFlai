@@ -133,3 +133,25 @@ QsFlai
 4. ```"isImgStaticSize":"true"``` - Будет ли изображение менять свои размеры при анимации. Может принимать значения ```true```/```false```.
 
     ![isImgStaticSize](source/doc/isImgStaticSize.gif)
+
+5. ```"Position":"100,512"``` - Позиция окна на экране
+
+6. ```"Scale":{"Initial":"120,30","Final":"280,150"}``` - Размеры окна.
+
+    6.1 ```"Initial":"120,30"``` - Начальный размер.
+
+    ![ScaleInitial](source/doc/ScaleInitial.jpg)
+
+    6.2 ```"Final":"280,150"``` - Конечный размер
+
+    ![ScaleFinal](source/doc/ScaleFinal.jpg)
+
+7. ```"Animation":{"Speed":1000}``` - Настройка анимации окна
+
+    7.1 ```"Speed":1000``` - Скорость анимации окна
+
+    250/1000
+
+    ![AnimationSpeed](source/doc/AnimationSpeed.gif)
+
+
