@@ -129,3 +129,7 @@ QsFlai
 3. ```"BackgroundImage":""``` - Изображение на заднем плане окна. Изображение должно находиться в одной папке с приложением. (Рекомендуется менять с параметрами: ```"BorderColor":"#80000000"```, ```"editMode":{"originalColor":"#64000000"```)
 
     ![BackgroundImage](source/doc/BackgroundImage.jpg)
+
+4. ```"isImgStaticSize":"true"``` - Будет ли изображение менять свои размеры при анимации. Может принимать значения ```true```/```false```.
+
+    ![isImgStaticSize](source/doc/isImgStaticSize.gif)
