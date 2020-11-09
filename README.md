@@ -156,18 +156,55 @@ QsFlai
 
 8. ```"filesSettings":{"Size":"80,110","blockHeight":40.0,"Margin":"1,1,1,1","TextColor":"#FFFFFFFF","FontFamily":"Agency FB","FontSize":20.0,"BackgroundColor":"#80000000","BorderColor":"#FF000000","BorderSize":"1,1,1,1"}``` - Настройки файлов
 
-8.1 ```"Size":"80,110"``` - Размер файла
+    8.1 ```"Size":"80,110"``` - Размер файла
 
-8.2 ```"blockHeight":40.0``` - ??? Ширина фотографии???
+    ```70,70``` / ```80,110```
 
-8.3 ```"Margin":"1,1,1,1"``` - Отступы от файлов
+    ![filesSettingsSize](source/doc/filesSettingsSize.jpg)
 
-8.4 ```"BackgroundColor":"#80000000"``` - Цвет блока
+    8.2 ```"blockHeight":40.0``` - Ширина изображения
 
-8.5 ```"BorderColor":"#FF000000"``` - Цвет каемки файла
+    ```20.0``` / ```40.0```
 
-8.6 ```"BorderSize":"1,1,1,1"``` - Толщина каемки файла
+    ![filesSettingsblockHeight](source/doc/filesSettingsblockHeight.jpg)
 
+    8.3 ```"Margin":"1,1,1,1"``` - Отступы от файлов
+
+    ```Справа, сверху, слева, снизу``` = ```"1,1,1,1"```
+
+    ```"10,1,30,5"``` / ```"1,1,1,1"```
+
+    ![filesSettingsMargin](source/doc/filesSettingsMargin.jpg)
+
+    8.4 ```"TextColor":"#FFFFFFFF"``` - Цвет текста
+
+    ![filesSettingsTextColor](source/doc/filesSettingsTextColor.jpg)
+
+    8.5 ```"FontFamily":"Agency FB"``` - Шрифт текста
+
+    ![filesSettingsFontFamily](source/doc/filesSettingsFontFamily.jpg)
+
+    8.6 ```"FontSize":20.0``` - Размер текста
+
+    ```30.2``` / ```20```
+
+    ![filesSettingsFontSize](source/doc/filesSettingsFontSize.jpg)
+
+    8.7 ```"BackgroundColor":"#80000000"``` - Цвет блока
+
+    ![filesSettingsBackgroundColor](source/doc/filesSettingsBackgroundColor.jpg)
+
+    8.8 ```"BorderColor":"#FF000000"``` - Цвет каемки файла
+
+    ![filesSettingsBorderColor](source/doc/filesSettingsBorderColor.jpg)
+
+    8.9 ```"BorderSize":"1,1,1,1"``` - Толщина каемки файла
+
+    ```Справа, сверху, слева, снизу``` = ```"1,1,1,1"```
+
+    ```"10,5"``` / ```"1,1,1,1"```
+
+    ![filesSettingsBorderSize](source/doc/filesSettingsBorderSize.jpg)
 
 ///
 "filesSettings":{}, // Настройки файлов(Например ширина и высота).
