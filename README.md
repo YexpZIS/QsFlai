@@ -230,3 +230,9 @@ QsFlai
 Установка программы
 ----
 Для установки данной программы на ПК требуестся скачать файл ```QsFlai\bin\Release\QsFlai.exe``` и поместить данный файл в любую папку на компьютере. В данной папке будут храниться настройки приложения и картинки. После данного этапа требуется создать ярлык ссылающийся на программу и поместить данный ярлык в папку автозагрузки Windows(```%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup```). 
+
+
+Схема
+----
+
+![architecture](source/application architecture/architecture.png)

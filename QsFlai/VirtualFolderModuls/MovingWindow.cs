@@ -30,9 +30,8 @@ namespace QsFlai.VirtualFolderModuls
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                if (!e.Handled) // ? Событие еще не обработано другим событием ? 
+                if (!e.Handled)
                 {
-                    // Если убрать данную проверку по возникают трудно уловимые ошибки
                     try
                     {
                         window.DragMove();
