@@ -6,3 +6,5 @@ ignore/
 .vs/
 QsFlai/obj/
 QsFlai/bin/
+
+!QsFlai/bin/Release/QsFlai.exe
