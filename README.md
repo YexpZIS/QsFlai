@@ -235,4 +235,4 @@ QsFlai
 Схема
 ----
 
-![architecture](source/application architecture/architecture.png)
+![architecture](source/application_architecture/architecture.png)
